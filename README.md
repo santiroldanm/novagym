@@ -104,17 +104,3 @@ Siga los siguientes pasos para ejecutar el proyecto de manera local (entornos co
     php artisan serve
     ```
     Acceda al sistema a través de `http://127.0.0.1:8000` o la URL configurada en Laragon (`http://novagym.test`).
-
----
-
-## 👥 Equipo de Trabajo (3 Integrantes)
-
-*   **Integrante 1 (Líder / DevOps):** [Nombre del Integrante A] - Despliegue, Empaquetado y Configuración de Servidor.
-*   **Integrante 2 (Fullstack Developer):** [Nombre del Integrante B] - Desarrollo de Lógica de Negocio y Controladores.
-*   **Integrante 3 (Frontend / UI Designer):** [Nombre del Integrante C] - Maquetación y Diseño de Estilos Obsidian Cyberpunk.
-
----
-
-## 📅 Entrega y Sustentación
-*   **Fecha de Sustentación:** Sábado 30 de Mayo de 2026.
-*   **Formato de Entrega:** Proyecto publicado en internet, archivo `.zip` comprimido y copia estructurada del script de base de datos SQL.
