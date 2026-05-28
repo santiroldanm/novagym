@@ -1,66 +1,120 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ⚡ NOVA GYM - High Performance System
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=600" width="500" alt="NovaGym Cover" style="border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
 </p>
 
-## About Laravel
+**NovaGym** es una plataforma de software de alto rendimiento desarrollada en **Laravel 11** y diseñada específicamente para entrenadores, preparadores físicos y administradores de centros deportivos. Ofrece un panel de control avanzado con una estética visual *Obsidian Cyberpunk* (tonos oscuros y acentos cian cyber fluorescentes) que optimiza la experiencia operativa diaria y el seguimiento de atletas de élite.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este proyecto ha sido desarrollado en el marco de las actividades prácticas de la asignatura de desarrollo web, cumpliendo de manera estricta con todas las especificaciones y entregables solicitados.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Tecnologías Utilizadas
 
-## Learning Laravel
+*   **Core Backend:** Laravel 11.x (PHP 8.2+)
+*   **Database Engine:** MySQL / MariaDB (totalmente modelado mediante migraciones y relaciones Eloquent)
+*   **Estilos y UI:** Tailwind CSS (a través de directivas CDN avanzadas)
+*   **Fuentes y Tipografía:** Google Fonts (*Inter*, *Space Grotesk*, *Hanken Grotesk*)
+*   **Iconografía:** Material Symbols Outlined y FontAwesome 6.4
+*   **Interactividad Frontend:** jQuery 3.6 & DataTables 1.13 (con traducción al español e integración estilística Obsidian)
+*   **Visualización de Datos:** Chart.js (gráficos analíticos interactivos con conmutadores dinámicos)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ✨ Funcionalidades Principales
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1.  **Landing Page Profesional:** Una página de inicio moderna ([welcome.blade.php](resources/views/welcome.blade.php)) que introduce la propuesta de valor del gimnasio con animaciones y micro-interacciones.
+2.  **Sistema de Acceso Seguro (Auth):**
+    *   Formularios de **Registro** y **Login** totalmente personalizados bajo la estética oscura de la marca.
+    *   Restauración de contraseña simulada a través de la interfaz web ([forgot-password.blade.php](resources/views/auth/forgot-password.blade.php)).
+    *   Protección de rutas críticas mediante middlewares de Laravel (`auth` y `guest`).
+3.  **Dashboard del Administrador (Home):**
+    *   Identificación en tiempo real del usuario activo (`Auth::user()->name`) con insignia especial de Administrador.
+    *   Bento-Grid de métricas principales (Total de atletas, activos, inactivos, rutinas asignadas).
+    *   **Gráfico Analítico Interactivo:** Integración de Chart.js que visualiza el registro histórico de socios, permitiendo conmutar dinámicamente entre vista mensual y anual.
+4.  **Gestión de Perfil:** Panel exclusivo para que el entrenador activo edite sus datos básicos (nombre, correo electrónico) y actualice de forma segura su contraseña.
+5.  **CRUD de Clientes (Atletas):**
+    *   Registro completo de socios con validación avanzada de datos.
+    *   **Subida Física de Imágenes:** Soporta el guardado y recuperación de fotos en el disco `public` del servidor local, además de la entrada por URL.
+    *   **DataTables Integration:** Listado principal integrado con DataTables en español, soporte de ordenamiento, paginado, búsqueda en caliente y un filtro por estado activo/inactivo.
+6.  **CRUD de Rutinas de Entrenamiento:**
+    *   Creación y edición de planes de entrenamiento con dificultades asignadas (Principiante, Intermedio, Avanzado).
+    *   Vínculo directo a clientes activos.
+    *   **Exportación a PDF:** Generador de ficha de entrenamiento oficial en PDF de manera rápida y ligera.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 💾 Modelado de Base de Datos
 
-### Premium Partners
+La base de datos se modeló mediante migraciones relacionales robustas:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+*   **Tabla `users`:** Administradores/Entrenadores autorizados en el sistema.
+*   **Tabla `clients`:** Socios deportistas vinculados a un entrenador creador (`user_id` clave foránea).
+*   **Tabla `routines`:** Planes de entrenamiento asociados a un cliente específico (`client_id` clave foránea, configurado con borrado en cascada `onDelete('cascade')`).
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🚀 Instrucciones de Instalación y Configuración
 
-## Code of Conduct
+Siga los siguientes pasos para ejecutar el proyecto de manera local (entornos como Laragon, XAMPP o PHP puro):
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1.  **Clonar o Extraer el Proyecto:**
+    Extraiga el archivo comprimido del proyecto en su directorio de trabajo (ej. `C:\laragon\www\novagym`).
 
-## Security Vulnerabilities
+2.  **Instalar Dependencias de Composer:**
+    Ejecute el siguiente comando en la raíz del proyecto para descargar e instalar todas las dependencias del framework:
+    ```bash
+    composer install
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3.  **Configurar el Archivo de Entorno:**
+    Duplique el archivo `.env.example` y renómbrelo a `.env`. Asegúrese de configurar las credenciales correctas de su base de datos local:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=novagym
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
 
-## License
+4.  **Generar Clave de Aplicación:**
+    Cree la clave de cifrado única de Laravel ejecutando:
+    ```bash
+    php artisan key:generate
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5.  **Ejecutar Migraciones y Poblar la Base de Datos:**
+    Puede crear las tablas e importar de forma automática el set de datos premium precargados ejecutando el comando de semillas de Laravel:
+    ```bash
+    php artisan migrate --seed
+    ```
+    *Nota: Alternativamente, puede importar directamente el archivo `seed_data.sql` incluido en la raíz en su gestor de base de datos (phpMyAdmin / HeidiSQL).*
+
+6.  **Crear el Enlace Simbólico del Almacenamiento (Storage Link):**
+    Para habilitar la correcta visualización de las imágenes cargadas físicamente por los usuarios, ejecute:
+    ```bash
+    php artisan storage:link
+    ```
+
+7.  **Iniciar Servidor Local:**
+    Levante el servidor de desarrollo integrado de Laravel:
+    ```bash
+    php artisan serve
+    ```
+    Acceda al sistema a través de `http://127.0.0.1:8000` o la URL configurada en Laragon (`http://novagym.test`).
+
+---
+
+## 👥 Equipo de Trabajo (3 Integrantes)
+
+*   **Integrante 1 (Líder / DevOps):** [Nombre del Integrante A] - Despliegue, Empaquetado y Configuración de Servidor.
+*   **Integrante 2 (Fullstack Developer):** [Nombre del Integrante B] - Desarrollo de Lógica de Negocio y Controladores.
+*   **Integrante 3 (Frontend / UI Designer):** [Nombre del Integrante C] - Maquetación y Diseño de Estilos Obsidian Cyberpunk.
+
+---
+
+## 📅 Entrega y Sustentación
+*   **Fecha de Sustentación:** Sábado 30 de Mayo de 2026.
+*   **Formato de Entrega:** Proyecto publicado en internet, archivo `.zip` comprimido y copia estructurada del script de base de datos SQL.
