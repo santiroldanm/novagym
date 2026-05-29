@@ -23,7 +23,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        // 2. Generate 18 clients distributed over the last 8 months
+        // 2. Create instructor profile for admin user
+        $this->call(InstructorSeeder::class);
+
+        // 3. Generate 18 clients distributed over the last 8 months
         // Let's create an array of specific dates over the last few months to get a beautiful chart curve.
         // Months: Oct, Nov, Dec, Jan, Feb, Mar, Apr, May (assuming current month is May 2026)
         $faker = \Faker\Factory::create();
@@ -64,7 +67,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 3. Generate 10 routines distributed among our clients
+        // 4. Generate 10 routines distributed among our clients
         $routineTemplates = [
             [
                 'name' => 'Hipertrofia Funcional X',

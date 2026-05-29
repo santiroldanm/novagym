@@ -17,6 +17,7 @@ class Routine extends Model
      */
     protected $fillable = [
         'client_id',
+        'instructor_id',
         'name',
         'description',
         'difficulty',
@@ -28,5 +29,13 @@ class Routine extends Model
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
+    }
+
+    /**
+     * Get the instructor that created the routine.
+     */
+    public function instructor(): BelongsTo
+    {
+        return $this->belongsTo(Instructor::class);
     }
 }

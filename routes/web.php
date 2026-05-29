@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RoutineController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -54,6 +55,9 @@ Route::middleware('auth')->group(function () {
 
     // Routines CRUD Management
     Route::resource('routines', RoutineController::class);
+
+    // Instructors CRUD Management
+    Route::resource('instructors', InstructorController::class);
 
     // User Profile management
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

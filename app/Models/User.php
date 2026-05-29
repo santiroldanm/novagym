@@ -50,4 +50,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Client::class);
     }
+
+    /**
+     * Get the instructor profile associated with the user (if any).
+     */
+    public function instructor()
+    {
+        return $this->hasOne(Instructor::class);
+    }
+
+    /**
+     * Get the client profile associated with the user (if any).
+     */
+    public function client()
+    {
+        return $this->hasOne(Client::class);
+    }
 }
