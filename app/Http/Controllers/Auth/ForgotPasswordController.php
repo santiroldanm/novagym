@@ -10,7 +10,12 @@ class ForgotPasswordController extends Controller
 {
     public function store(Request $request)
     {
-        $request->validate(['email' => 'required|email|exists:users,email']);
+        $request->validate([
+            'email' => 'required|email'
+        ], [
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El formato del correo electrónico no es válido.'
+        ]);
 
         $status = Password::broker()->sendResetLink(
             $request->only('email')
@@ -20,6 +25,14 @@ class ForgotPasswordController extends Controller
             return back()->with(['success' => 'Te hemos enviado por correo el enlace para restablecer tu contraseña.']);
         }
 
-        return back()->withErrors(['email' => 'No se pudo enviar el correo de recuperación.']);
+        // Map status codes to custom Spanish messages
+        $messages = [
+            Password::INVALID_USER => 'No existe ningún usuario registrado con esa dirección de correo electrónico.',
+            Password::RESET_THROTTLED => 'Has solicitado restablecer tu contraseña demasiadas veces. Por favor, espera un momento antes de volver a intentarlo.',
+        ];
+
+        $error = $messages[$status] ?? 'No se pudo enviar el correo de recuperación. Revisa la configuración de red.';
+
+        return back()->withErrors(['email' => $error]);
     }
 }
