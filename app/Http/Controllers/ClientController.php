@@ -15,7 +15,7 @@ class ClientController extends Controller
     public function index()
     {
         // Fetch clients with their routines count
-        $clients = Client::withCount('routines')
+        $clients = Client::with(['branch'])->withCount('routines')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -27,7 +27,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        $branches = \App\Models\Branch::where('status', 'active')->orderBy('name')->get();
+        return view('clients.create', compact('branches'));
     }
 
     /**
@@ -39,6 +40,7 @@ class ClientController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:clients,email|max:255',
             'phone' => 'nullable|string|max:50',
+            'branch_id' => 'nullable|exists:branches,id',
             'photo_file' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'photo_url' => 'nullable|url|max:255',
             'status' => 'required|in:active,inactive',
@@ -68,7 +70,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('clients.edit', compact('client'));
+        $branches = \App\Models\Branch::where('status', 'active')->orderBy('name')->get();
+        return view('clients.edit', compact('client', 'branches'));
     }
 
     /**
@@ -80,6 +83,7 @@ class ClientController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:clients,email,' . $client->id . '|max:255',
             'phone' => 'nullable|string|max:50',
+            'branch_id' => 'nullable|exists:branches,id',
             'photo_file' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'photo_url' => 'nullable|url|max:255',
             'status' => 'required|in:active,inactive',

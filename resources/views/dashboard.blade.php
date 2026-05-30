@@ -37,24 +37,24 @@
 </header>
 
 <!-- Metric Bento Grid -->
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-    <!-- Card 1: Total Clients -->
-    <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden">
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <!-- Card 1: Ingresos Activos -->
+    <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-[#032333] to-slate-950">
         <div class="relative z-10 flex-1">
-            <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Total de Clientes</p>
-            <h3 class="font-headline text-4xl font-black text-white mt-2">{{ $totalClients }}</h3>
-            <p class="text-[11px] text-slate-400 font-medium mt-1">Registrados en la plataforma</p>
+            <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Ingresos Estimados</p>
+            <h3 class="font-headline text-4xl font-black text-brand-accent mt-2">${{ number_format($totalRevenue, 2) }}</h3>
+            <p class="text-[11px] text-brand-accent/80 font-bold mt-1">Membresías activas hoy</p>
         </div>
         <div class="w-14 h-14 rounded-xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent shadow-[0_0_15px_rgba(0,240,255,0.1)] flex-shrink-0">
-            <span class="material-symbols-outlined text-3xl font-bold">group</span>
+            <span class="material-symbols-outlined text-3xl font-bold">payments</span>
         </div>
     </div>
     
-    <!-- Card 2: Active Clients -->
+    <!-- Card 2: Clientes Activos -->
     <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden">
         <div class="relative z-10 flex-1">
             <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Clientes Activos</p>
-            <h3 class="font-headline text-4xl font-black text-emerald-400 mt-2">{{ $activeClients }}</h3>
+            <h3 class="font-headline text-4xl font-black text-emerald-400 mt-2">{{ $activeClients }} <span class="text-xs text-slate-500 font-medium">/ {{ $totalClients }}</span></h3>
             <p class="text-[11px] text-emerald-500/80 font-bold mt-1 flex items-center gap-1">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Entrenando actualmente
             </p>
@@ -64,27 +64,63 @@
         </div>
     </div>
     
-    <!-- Card 3: Inactive Clients -->
+    <!-- Card 3: Membresías Activas -->
     <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden">
         <div class="relative z-10 flex-1">
-            <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Clientes Inactivos</p>
-            <h3 class="font-headline text-4xl font-black text-red-400 mt-2">{{ $inactiveClients }}</h3>
-            <p class="text-[11px] text-red-400 font-semibold mt-1">Requieren seguimiento o pausa</p>
+            <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Membresías Activas</p>
+            <h3 class="font-headline text-4xl font-black text-violet-400 mt-2">{{ $activeMemberships }}</h3>
+            <p class="text-[11px] text-violet-400 font-semibold mt-1">Planes vigentes cobrados</p>
         </div>
-        <div class="w-14 h-14 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.1)] flex-shrink-0">
-            <span class="material-symbols-outlined text-3xl font-bold">person_off</span>
+        <div class="w-14 h-14 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 shadow-[0_0_15px_rgba(139,92,246,0.1)] flex-shrink-0">
+            <span class="material-symbols-outlined text-3xl font-bold">credit_card</span>
         </div>
     </div>
     
-    <!-- Card 4: Routines Total -->
+    <!-- Card 4: Rutinas y Dietas -->
     <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden">
         <div class="relative z-10 flex-1">
-            <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Rutinas Asignadas</p>
-            <h3 class="font-headline text-4xl font-black text-amber-400 mt-2">{{ $totalRoutines }}</h3>
-            <p class="text-[11px] text-slate-400 font-medium mt-1">Planes activos de atletas</p>
+            <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Rutinas / Nutrición</p>
+            <h3 class="font-headline text-4xl font-black text-amber-400 mt-2">{{ $totalRoutines }} <span class="text-xs text-slate-500 font-medium">/ {{ $totalMealPlans }}</span></h3>
+            <p class="text-[11px] text-slate-400 font-medium mt-1">Rutinas / Planes asignados</p>
         </div>
         <div class="w-14 h-14 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.1)] flex-shrink-0">
             <span class="material-symbols-outlined text-3xl font-bold">fitness_center</span>
+        </div>
+    </div>
+</section>
+
+<!-- Secondary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <!-- Sedes Activas -->
+    <div class="neon-glow-card p-4 rounded-xl flex items-center gap-4 bg-slate-900/30">
+        <div class="w-11 h-11 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-brand-accent">
+            <span class="material-symbols-outlined text-xl">domain</span>
+        </div>
+        <div>
+            <p class="text-[9px] text-slate-400 tracking-widest font-black uppercase font-display">Sedes del Gimnasio</p>
+            <h4 class="text-lg font-headline font-black text-white mt-0.5">{{ $totalBranches }} Activas</h4>
+        </div>
+    </div>
+    
+    <!-- Staff de Coaches -->
+    <div class="neon-glow-card p-4 rounded-xl flex items-center gap-4 bg-slate-900/30">
+        <div class="w-11 h-11 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+            <span class="material-symbols-outlined text-xl">sports_gymnastics</span>
+        </div>
+        <div>
+            <p class="text-[9px] text-slate-400 tracking-widest font-black uppercase font-display">Staff de Coaches</p>
+            <h4 class="text-lg font-headline font-black text-white mt-0.5">{{ $totalInstructors }} Instructores</h4>
+        </div>
+    </div>
+
+    <!-- Planes Nutricionales -->
+    <div class="neon-glow-card p-4 rounded-xl flex items-center gap-4 bg-slate-900/30">
+        <div class="w-11 h-11 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <span class="material-symbols-outlined text-xl">restaurant</span>
+        </div>
+        <div>
+            <p class="text-[9px] text-slate-400 tracking-widest font-black uppercase font-display">Dietas & Alimentación</p>
+            <h4 class="text-lg font-headline font-black text-white mt-0.5">{{ $totalMealPlans }} Planes</h4>
         </div>
     </div>
 </section>

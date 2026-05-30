@@ -134,7 +134,7 @@
             <!-- Submit Button -->
             <div class="border-t border-slate-800/80 pt-6 mt-8 flex justify-end">
                 <button type="submit" class="bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest px-8 py-3 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-105 transition-all duration-300 font-bold font-display text-sm flex items-center gap-2">
-                    <span class="material-symbols-outiled text-[20px] font-black">save</span> Guardar Configuración
+                    <span class="material-symbols-outlined text-[20px] font-black">save</span> Guardar Configuración
                 </button>
             </div>
         </form>
@@ -147,7 +147,7 @@
         
         <!-- Large Glowing Profile Avatar -->
         <div class="w-20 h-20 rounded-full bg-brand-accent/10 border-2 border-brand-accent flex items-center justify-center mb-4 mt-4 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative">
-            <span class="material-symbols-outiled text-brand-accent text-5xl font-bold select-none">fitness_center</span>
+            <span class="material-symbols-outlined text-brand-accent text-5xl font-bold select-none">fitness_center</span>
         </div>
         
         <h4 class="text-lg font-display font-bold text-white leading-tight">{{ $profile->name }}</h4>

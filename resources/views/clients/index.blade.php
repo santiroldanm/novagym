@@ -81,7 +81,13 @@
                     
                     <!-- Name Column -->
                     <td class="py-4 px-6 font-display font-bold text-sm text-white">
-                        {{ $client->name }}
+                        <div>{{ $client->name }}</div>
+                        @if($client->branch)
+                            <div class="text-[10px] text-brand-accent/80 font-bold uppercase tracking-wider mt-1 flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[12px]">location_on</span>
+                                {{ $client->branch->name }}
+                            </div>
+                        @endif
                     </td>
                     
                     <!-- Contact Column -->

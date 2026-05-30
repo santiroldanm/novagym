@@ -41,7 +41,7 @@ class ProfileController extends Controller
             $type = 'admin';
             $profile = $user;
             $clientsCount = $user->clients()->count();
-            return view('profile.admin.edit', compact('profile', 'type', 'clientsCount'));
+            return view('profile.edit', compact('profile', 'type', 'clientsCount'));
         }
     }
 

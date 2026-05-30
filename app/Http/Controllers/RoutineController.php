@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RoutineController extends Controller
 {
@@ -107,5 +108,17 @@ class RoutineController extends Controller
 
         return redirect()->route('routines.index')
             ->with('success', 'Rutina eliminada exitosamente.');
+    }
+
+    /**
+     * Download the routine as a PDF.
+     */
+    public function downloadPdf($id)
+    {
+        $routine = Routine::with(['client', 'instructor'])->findOrFail($id);
+        
+        $pdf = Pdf::loadView('routines.pdf', compact('routine'));
+        
+        return $pdf->download('rutina_' . \Illuminate\Support\Str::slug($routine->name) . '.pdf');
     }
 }

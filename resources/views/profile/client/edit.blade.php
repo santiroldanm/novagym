@@ -37,7 +37,7 @@
             <!-- Section 1: Personal info -->
             <div>
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
-                    <span class="material-symbols-outiled text-brand-accent text-lg">info</span> Datos del Perfil
+                    <span class="material-symbols-outlined text-brand-accent text-lg">info</span> Datos del Perfil
                 </h3>
                 <p class="text-xs text-slate-400 font-medium mb-4">Actualiza tu nombre, correo electrónico y teléfono.</p>
             </div>
@@ -67,7 +67,7 @@
             <!-- Section 2: Photo -->
             <div class="pt-6">
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
-                    <span class="material-symbols-outiled text-brand-accent text-lg">image</span> Fotografía de Perfil
+                    <span class="material-symbols-outlined text-brand-accent text-lg">image</span> Fotografía de Perfil
                 </h3>
                 <p class="text-xs text-slate-400 font-medium mb-4">Actualiza tu foto de perfil subiendo un archivo o proporcionando una URL externa.</p>
             </div>
@@ -100,7 +100,7 @@
             <!-- Section 3: Status -->
             <div class="pt-6">
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
-                    <span class="material-symbols-outiled text-brand-accent text-lg">check_circle</span> Estado de Cuenta
+                    <span class="material-symbols-outlined text-brand-accent text-lg">check_circle</span> Estado de Cuenta
                 </h3>
                 <p class="text-xs text-slate-400 font-medium mb-4">Actualiza tu estado de cuenta en la plataforma.</p>
             </div>
@@ -126,7 +126,7 @@
             <!-- Submit Button -->
             <div class="border-t border-slate-800/80 pt-6 mt-8 flex justify-end">
                 <button type="submit" class="bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest px-8 py-3 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-105 transition-all duration-300 font-bold font-display text-sm flex items-center gap-2">
-                    <span class="material-symbols-outiled text-[20px] font-black">save</span> Guardar Configuración
+                    <span class="material-symbols-outlined text-[20px] font-black">save</span> Guardar Configuración
                 </button>
             </div>
         </form>
@@ -139,7 +139,7 @@
         
         <!-- Large Glowing Profile Avatar -->
         <div class="w-20 h-20 rounded-full bg-brand-accent/10 border-2 border-brand-accent flex items-center justify-center mb-4 mt-4 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative">
-            <span class="material-symbols-outiled text-brand-accent text-5xl font-bold select-none">person</span>
+            <span class="material-symbols-outlined text-brand-accent text-5xl font-bold select-none">person</span>
         </div>
         
         <h4 class="text-lg font-display font-bold text-white leading-tight">{{ $profile->name }}</h4>

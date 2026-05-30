@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Recuperar Contraseña - NovaGym</title>
+    <title>Restablecer Contraseña - NovaGym</title>
     
     <!-- CDNs -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -17,11 +17,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            darkest: "#030712", // slate-950
-                            dark: "#0b0f19",    // slate-900
-                            card: "#0f172a",    // slate-900 card
-                            accent: "#00f0ff",   // Cyber cian
-                            border: "#1e293b"   // slate-800
+                            darkest: "#030712",
+                            dark: "#0b0f19",
+                            card: "#0f172a",
+                            accent: "#00f0ff",
+                            border: "#1e293b"
                         }
                     },
                     fontFamily: {
@@ -75,56 +75,46 @@
         <!-- Central Card Box -->
         <div class="neon-card p-8 rounded-2xl shadow-2xl border border-brand-border/60">
             <div class="mb-6">
-                <h2 class="text-xl font-bold font-display text-white uppercase">¿Olvidaste la Contraseña?</h2>
-                <p class="text-xs text-slate-400 font-medium mt-1">Escribe tu correo electrónico y te enviaremos instrucciones de recuperación inmediatas.</p>
+                <h2 class="text-xl font-bold font-display text-white uppercase">Crear Nueva Contraseña</h2>
+                <p class="text-xs text-slate-400 font-medium mt-1">Ingresa tu nueva contraseña para acceder a tu cuenta.</p>
             </div>
 
-            <!-- Session Messages -->
-            @if(session('success'))
-                <div class="mb-4 bg-emerald-900/50 border border-emerald-500 text-emerald-400 px-4 py-3 rounded-xl text-sm font-medium">
-                    {{ session('success') }}
-                </div>
-            @endif
             @if($errors->any())
                 <div class="mb-4 bg-red-900/50 border border-red-500 text-red-400 px-4 py-3 rounded-xl text-sm font-medium">
                     {{ $errors->first() }}
                 </div>
             @endif
 
-            <!-- Form Action -->
-            <form action="{{ route('password.email') }}" method="POST" class="space-y-4">
+            <form action="{{ route('password.update') }}" method="POST" class="space-y-4">
                 @csrf
-                <!-- Email Input -->
+                <input type="hidden" name="token" value="{{ $token }}">
+
                 <div>
-                    <label for="email" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Correo Electrónico Registrado</label>
-                    <input type="email" id="email" name="email" required placeholder="Ej. admin@novagym.com"
+                    <label for="email" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" value="{{ $email ?? old('email') }}" required readonly
+                        class="focus-cyan w-full bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-slate-400 cursor-not-allowed focus:outline-none transition-all duration-300 text-sm">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Nueva Contraseña</label>
+                    <input type="password" id="password" name="password" required placeholder="Min 8 caracteres"
+                        class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white placeholder-slate-700 focus:outline-none transition-all duration-300 text-sm">
+                </div>
+
+                <div>
+                    <label for="password_confirmation" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Confirmar Contraseña</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Min 8 caracteres"
                         class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white placeholder-slate-700 focus:outline-none transition-all duration-300 text-sm">
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" 
                     class="w-full py-3 bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest font-display font-bold rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-[0.98] transition-all duration-150 text-sm mt-6 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,240,255,0.15)]">
-                    <span class="material-symbols-outlined text-[20px] font-black">mail</span>
-                    Enviar Instrucciones
+                    <span class="material-symbols-outlined text-[20px] font-black">lock_reset</span>
+                    Actualizar Contraseña
                 </button>
             </form>
-
-            <!-- Bottom Login Link -->
-            <div class="mt-8 border-t border-slate-800/80 pt-4 text-center">
-                <p class="text-xs text-slate-400 font-medium">
-                    ¿Recordaste tus credenciales? 
-                    <a href="{{ route('login') }}" class="text-brand-accent hover:underline font-bold font-display tracking-wide uppercase ml-1">Inicia Sesión</a>
-                </p>
-            </div>
-        </div>
-
-        <!-- Back Button -->
-        <div class="text-center">
-            <a href="/" class="text-xs text-slate-500 hover:text-white transition-colors flex items-center justify-center gap-1 font-bold font-display uppercase tracking-widest">
-                <span class="material-symbols-outlined text-sm font-bold">arrow_back</span> Volver a la Landing
-            </a>
         </div>
     </div>
-
 </body>
 </html>

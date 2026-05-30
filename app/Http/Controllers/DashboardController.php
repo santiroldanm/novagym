@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Routine;
+use App\Models\Membership;
+use App\Models\MealPlan;
+use App\Models\Branch;
+use App\Models\Instructor;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -21,7 +25,14 @@ class DashboardController extends Controller
         $inactiveClients = Client::where('status', 'inactive')->count();
         $totalRoutines = Routine::count();
 
-        // 2. Client registration per month (Last 8 Months)
+        // 2. New Metrics (Phase 2)
+        $totalInstructors = Instructor::count();
+        $totalBranches = Branch::where('status', 'active')->count();
+        $activeMemberships = Membership::where('status', 'active')->count();
+        $totalMealPlans = MealPlan::count();
+        $totalRevenue = Membership::where('status', 'active')->sum('price');
+
+        // 3. Client registration per month (Last 8 Months)
         $months = [];
         $counts = [];
         
@@ -35,7 +46,7 @@ class DashboardController extends Controller
             $counts[] = $count;
         }
 
-        // 3. Client registration per year (Last 5 Years)
+        // 4. Client registration per year (Last 5 Years)
         $years = [];
         $yearCounts = [];
         $currentYear = Carbon::now()->year;
@@ -48,7 +59,7 @@ class DashboardController extends Controller
             $yearCounts[] = $count;
         }
 
-        // 3. Recent activity list (Simulated high-quality audit log)
+        // 5. Recent activity list (Simulated high-quality audit log)
         $recentActivities = [
             [
                 'type' => 'routine',
@@ -81,6 +92,11 @@ class DashboardController extends Controller
             'activeClients',
             'inactiveClients',
             'totalRoutines',
+            'totalInstructors',
+            'totalBranches',
+            'activeMemberships',
+            'totalMealPlans',
+            'totalRevenue',
             'months',
             'counts',
             'years',

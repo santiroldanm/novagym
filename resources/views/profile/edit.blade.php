@@ -127,6 +127,23 @@
                 <span class="text-brand-accent font-black font-display text-sm">{{ $user->clients()->count() }}</span>
             </div>
         </div>
+
+        <!-- Quick Actions Menu -->
+        <div class="w-full border-t border-slate-800 mt-6 pt-4 space-y-2 text-left">
+            <p class="text-[9px] font-black text-slate-500 uppercase tracking-widest font-display mb-2">Accesos Rápidos</p>
+            <a href="{{ route('dashboard') }}" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-brand-accent/30 text-[11px] text-slate-300 hover:text-white transition-all duration-200">
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-brand-accent text-sm">dashboard</span> Ir al Dashboard
+                </span>
+                <span class="material-symbols-outlined text-slate-600 text-xs">chevron_right</span>
+            </a>
+            <a href="{{ route('clients.index') }}" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-brand-accent/30 text-[11px] text-slate-300 hover:text-white transition-all duration-200">
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-brand-accent text-sm">group</span> Gestionar Atletas
+                </span>
+                <span class="material-symbols-outlined text-slate-600 text-xs">chevron_right</span>
+            </a>
+        </div>
     </div>
 
 </div>

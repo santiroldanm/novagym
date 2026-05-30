@@ -75,6 +75,20 @@
                         </select>
                     </div>
                 </div>
+
+                <!-- Branch Field -->
+                <div>
+                    <label for="branch_id" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Sede de Entrenamiento</label>
+                    <select name="branch_id" id="branch_id"
+                        class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white focus:outline-none transition-all duration-300 text-sm">
+                        <option value="">-- Seleccionar Sede (Opcional) --</option>
+                        @foreach($branches as $branch)
+                            <option value="{{ $branch->id }}" {{ old('branch_id', $client->branch_id) == $branch->id ? 'selected' : '' }}>
+                                {{ $branch->name }} - {{ $branch->address }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
 
             <!-- Right Column: Photograph Dropzone & Review Preview (5 cols) -->

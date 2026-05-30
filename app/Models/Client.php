@@ -18,6 +18,7 @@ class Client extends Model
      */
     protected $fillable = [
         'user_id',
+        'branch_id',
         'name',
         'email',
         'phone',
@@ -39,5 +40,29 @@ class Client extends Model
     public function routines(): HasMany
     {
         return $this->hasMany(Routine::class);
+    }
+
+    /**
+     * Get the branch the client belongs to.
+     */
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    /**
+     * Get the memberships for the client.
+     */
+    public function memberships(): HasMany
+    {
+        return $this->hasMany(Membership::class);
+    }
+
+    /**
+     * Get the meal plans for the client.
+     */
+    public function mealPlans(): HasMany
+    {
+        return $this->hasMany(MealPlan::class);
     }
 }

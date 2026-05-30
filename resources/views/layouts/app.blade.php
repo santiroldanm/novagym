@@ -300,6 +300,26 @@
                         <span class="font-display font-bold text-sm tracking-wide hide-collapsed whitespace-nowrap transition-all duration-300">Rutinas</span>
                     </a>
                     
+                    <a class="{{ Request::routeIs('instructors.*') ? 'sidebar-active text-brand-accent' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/60 hover:border-l-4 hover:border-brand-accent/40' }} flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group center-collapsed" href="{{ route('instructors.index') }}">
+                        <span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110 flex-shrink-0">sports</span>
+                        <span class="font-display font-bold text-sm tracking-wide hide-collapsed whitespace-nowrap transition-all duration-300">Instructores</span>
+                    </a>
+                    
+                    <a class="{{ Request::routeIs('memberships.*') ? 'sidebar-active text-brand-accent' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/60 hover:border-l-4 hover:border-brand-accent/40' }} flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group center-collapsed" href="{{ route('memberships.index') }}">
+                        <span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110 flex-shrink-0">credit_card</span>
+                        <span class="font-display font-bold text-sm tracking-wide hide-collapsed whitespace-nowrap transition-all duration-300">Membresías</span>
+                    </a>
+                    
+                    <a class="{{ Request::routeIs('meal-plans.*') ? 'sidebar-active text-brand-accent' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/60 hover:border-l-4 hover:border-brand-accent/40' }} flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group center-collapsed" href="{{ route('meal-plans.index') }}">
+                        <span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110 flex-shrink-0">restaurant</span>
+                        <span class="font-display font-bold text-sm tracking-wide hide-collapsed whitespace-nowrap transition-all duration-300">Nutrición</span>
+                    </a>
+                    
+                    <a class="{{ Request::routeIs('branches.*') ? 'sidebar-active text-brand-accent' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/60 hover:border-l-4 hover:border-brand-accent/40' }} flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group center-collapsed" href="{{ route('branches.index') }}">
+                        <span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110 flex-shrink-0">domain</span>
+                        <span class="font-display font-bold text-sm tracking-wide hide-collapsed whitespace-nowrap transition-all duration-300">Sedes</span>
+                    </a>
+                    
                     <a class="{{ Request::routeIs('profile.edit') ? 'sidebar-active text-brand-accent' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/60 hover:border-l-4 hover:border-brand-accent/40' }} flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group center-collapsed" href="{{ route('profile.edit') }}">
                         <span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110 flex-shrink-0">manage_accounts</span>
                         <span class="font-display font-bold text-sm tracking-wide hide-collapsed whitespace-nowrap transition-all duration-300">Mi Perfil</span>

@@ -5,6 +5,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\MealPlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -36,10 +39,14 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [RegisterController::class, 'register']);
     
-    // Forgot Password mockup (returns a premium UI response or action)
+    // Real Password Reset Flow
     Route::get('/forgot-password', function () {
         return view('auth.forgot-password');
     })->name('password.request');
+    Route::post('/forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordController::class, 'store'])->name('password.email');
+    
+    Route::get('/reset-password/{token}', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'store'])->name('password.update');
 });
 
 // 3. PROTECTED SYSTEM ROUTES (AUTH REQUIRED)
@@ -55,9 +62,20 @@ Route::middleware('auth')->group(function () {
 
     // Routines CRUD Management
     Route::resource('routines', RoutineController::class);
+    Route::get('/routines/{routine}/pdf', [RoutineController::class, 'downloadPdf'])->name('routines.pdf');
 
     // Instructors CRUD Management
     Route::resource('instructors', InstructorController::class);
+
+    // Branches (Sedes) CRUD Management
+    Route::resource('branches', BranchController::class);
+
+    // Memberships CRUD Management
+    Route::resource('memberships', MembershipController::class);
+
+    // Meal Plans (Planes de Alimentación) CRUD Management
+    Route::resource('meal-plans', MealPlanController::class);
+    Route::get('/meal-plans/{meal_plan}/pdf', [MealPlanController::class, 'downloadPdf'])->name('meal-plans.pdf');
 
     // User Profile management
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
