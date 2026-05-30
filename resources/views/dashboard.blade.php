@@ -149,51 +149,57 @@
     </div>
     
     
-    <div class="space-y-6">
-        
-        
-        <div class="neon-glow-card p-6 rounded-2xl bg-brand-dark/45">
-            <h4 class="font-display font-bold text-white text-lg mb-4 flex items-center gap-2 border-b border-slate-800 pb-3">
-                <span class="material-symbols-outlined text-brand-accent">explore</span> Actividad Reciente
-            </h4>
-            <div class="space-y-4">
-                @foreach($recentActivities as $activity)
-                <div class="flex items-start gap-3 py-1.5 group">
-                    <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-brand-accent shadow-lg flex-shrink-0 group-hover:border-brand-accent/50 transition-colors">
-                        <span class="material-symbols-outlined text-[16px]">{{ $activity['icon'] }}</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <p class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors truncate">{{ $activity['title'] }}</p>
-                        <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">{{ $activity['description'] }}</p>
-                        <p class="text-[10px] text-brand-accent font-bold tracking-wide mt-1.5 flex items-center gap-1">
-                            <span class="w-1 h-1 rounded-full bg-brand-accent"></span> {{ $activity['time'] }}
-                        </p>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        
-        
-        <div class="bg-gradient-to-br from-slate-950 via-[#0a1120] to-[#030712] border-2 border-brand-accent/20 rounded-2xl p-6 flex flex-col justify-between h-[210px] relative overflow-hidden group shadow-2xl">
+    <div>
+        <div class="bg-gradient-to-br from-slate-950 via-[#0a1120] to-[#030712] border-2 border-brand-accent/20 rounded-2xl p-6 flex flex-col gap-5 relative overflow-hidden group shadow-2xl hover:border-brand-accent/40 transition-all duration-300">
             <div class="absolute inset-0 bg-cyan-500/5 mix-blend-overlay pointer-events-none"></div>
             
             <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-brand-accent/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
             
             <div class="relative z-10">
-                <div class="flex items-center gap-1.5 mb-2">
-                    <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-accent shadow-[0_0_8px_#00f0ff] animate-pulse"></span>
                     <p class="text-brand-accent font-display text-[10px] font-black uppercase tracking-widest">NovaGym AI Optimizer</p>
                 </div>
-                <h5 class="text-white text-lg font-display font-black leading-tight tracking-tight mt-1">Optimiza el impacto de tus rutinas con Inteligencia Artificial.</h5>
+                <h5 class="text-white text-2xl font-display font-black leading-tight tracking-tight mt-1">Optimiza el impacto de tus rutinas con Inteligencia Artificial.</h5>
                 <p class="text-[11px] text-slate-400 mt-2 font-medium">Analiza fatiga, cargas y progresión muscular de atletas.</p>
             </div>
+
+            <!-- AI ALERTS AND SUGGESTIONS LIST -->
+            <div class="relative z-10 space-y-3">
+                <p class="text-[9px] text-slate-400 font-display font-bold uppercase tracking-widest mb-2">Alertas y sugerencias de la IA</p>
+                
+                <!-- Alert 1 -->
+                <div class="flex items-start gap-3.5 p-4 rounded-xl bg-[#091120]/60 border border-slate-800/80 hover:border-slate-700/60 transition-colors">
+                    <span class="material-symbols-outlined text-amber-500 text-[22px] font-medium flex-shrink-0 mt-0.5">warning</span>
+                    <div>
+                        <p class="text-xs font-bold text-white font-display">Ajuste calórico sugerido</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Plan de Lucas Rivera requiere +150 kcal por incremento de carga física.</p>
+                    </div>
+                </div>
+                
+                <!-- Alert 2 -->
+                <div class="flex items-start gap-3.5 p-4 rounded-xl bg-[#091120]/60 border border-slate-800/80 hover:border-slate-700/60 transition-colors">
+                    <span class="material-symbols-outlined text-cyan-400 text-[22px] font-medium flex-shrink-0 mt-0.5">insights</span>
+                    <div>
+                        <p class="text-xs font-bold text-white font-display">Eficiencia general alta</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">94% de rutinas activas cumplen el rango objetivo de hipertrofia.</p>
+                    </div>
+                </div>
+                
+                <!-- Alert 3 -->
+                <div class="flex items-start gap-3.5 p-4 rounded-xl bg-[#091120]/60 border border-slate-800/80 hover:border-slate-700/60 transition-colors">
+                    <span class="material-symbols-outlined text-pink-500 text-[22px] font-medium flex-shrink-0 mt-0.5">trending_up</span>
+                    <div>
+                        <p class="text-xs font-bold text-white font-display">Fatiga acumulada</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Socio "Juan Pérez" supera el umbral de fatiga en Rutina 2 (Pierna).</p>
+                    </div>
+                </div>
+            </div>
             
-            <button onclick="alert('Se está inicializando el servicio NovaGym AI Optimizer...')" class="relative z-10 bg-brand-accent text-brand-darkest font-display font-bold text-xs py-2.5 px-5 rounded-xl self-start mt-4 hover:scale-95 transition-transform duration-150 shadow-[0_0_20px_rgba(0,240,255,0.35)]">
-                Analizar Ahora
+            <button onclick="alert('El servicio NovaGym AI Optimizer se encuentra en vías de desarrollo y estará disponible próximamente.')" class="relative z-10 bg-brand-accent text-brand-darkest font-display font-bold text-xs py-2.5 px-5 rounded-xl self-start mt-2 hover:scale-95 transition-transform duration-150 shadow-[0_0_20px_rgba(0,240,255,0.35)]">
+                Analizar Ahora (En desarrollo)
             </button>
         </div>
-        
     </div>
 </section>
 @endsection
