@@ -67,7 +67,7 @@
                     <td class="py-4 px-6">
                         <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-slate-800 flex items-center justify-center bg-slate-950/60 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
                             @if($instructor->photo)
-                                <img src="{{ asset('storage/' . $instructor->photo) }}" alt="{{ $instructor->name }}" class="w-full h-full object-cover">
+                                <img src="{{ $instructor->photo }}" alt="{{ $instructor->name }}" class="w-full h-full object-cover">
                             @else
                                 <span class="material-symbols-outlined text-slate-600 text-2xl font-bold select-none">account_circle</span>
                             @endif

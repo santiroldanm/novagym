@@ -90,7 +90,7 @@
                 
                 <div class="flex items-center space-x-3">
                     <label for="photo_url" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">URL de Foto</label>
-                    <input type="url" name="photo_url" id="photo_url" value="{{ old('photo_url') }}"
+                    <input type="url" name="photo_url" id="photo_url" value="{{ old('photo_url', $profile->photo) }}"
                         placeholder="https://ejemplo.com/foto.jpg"
                         class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white focus:outline-none transition-all duration-300 text-sm">
                 </div>
@@ -146,8 +146,12 @@
         <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-accent/5 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
         
         <!-- Large Glowing Profile Avatar -->
-        <div class="w-20 h-20 rounded-full bg-brand-accent/10 border-2 border-brand-accent flex items-center justify-center mb-4 mt-4 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative">
-            <span class="material-symbols-outlined text-brand-accent text-5xl font-bold select-none">fitness_center</span>
+        <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-brand-accent flex items-center justify-center mb-4 mt-4 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative bg-brand-accent/10">
+            @if($profile->photo)
+                <img src="{{ $profile->photo }}" alt="{{ $profile->name }}" class="w-full h-full object-cover">
+            @else
+                <span class="material-symbols-outlined text-brand-accent text-5xl font-bold select-none">fitness_center</span>
+            @endif
         </div>
         
         <h4 class="text-lg font-display font-bold text-white leading-tight">{{ $profile->name }}</h4>

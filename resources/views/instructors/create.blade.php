@@ -28,63 +28,139 @@
     </div>
 </header>
 
-<section class="neon-card p-8 rounded-2xl max-w-2xl">
+<section class="neon-card p-8 rounded-2xl max-w-5xl">
     <form action="{{ route('instructors.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Nombre Completo</label>
-                <input type="text" name="name" value="{{ old('name') }}" required class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Column: Details (7 cols) -->
+            <div class="lg:col-span-7 space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
+                        <span class="material-symbols-outlined text-brand-accent text-lg">info</span> 1. Información General
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Nombre Completo</label>
+                        <input type="text" name="name" value="{{ old('name') }}" required class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Correo Electrónico</label>
+                        <input type="email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Teléfono</label>
+                        <input type="text" name="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Especialidad</label>
+                        <select name="specialty" class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm appearance-none">
+                            <option value="">Seleccionar especialidad</option>
+                            <option value="Musculación" {{ old('specialty') == 'Musculación' ? 'selected' : '' }}>Musculación</option>
+                            <option value="Cardio" {{ old('specialty') == 'Cardio' ? 'selected' : '' }}>Cardio</option>
+                            <option value="Crossfit" {{ old('specialty') == 'Crossfit' ? 'selected' : '' }}>Crossfit</option>
+                            <option value="Boxeo" {{ old('specialty') == 'Boxeo' ? 'selected' : '' }}>Boxeo</option>
+                            <option value="Yoga" {{ old('specialty') == 'Yoga' ? 'selected' : '' }}>Yoga</option>
+                            <option value="Nutrición" {{ old('specialty') == 'Nutrición' ? 'selected' : '' }}>Nutrición</option>
+                            <option value="Fisioterapia" {{ old('specialty') == 'Fisioterapia' ? 'selected' : '' }}>Fisioterapia</option>
+                            <option value="Personalizada" {{ old('specialty') == 'Personalizada' ? 'selected' : '' }}>Personalizada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Estado</label>
+                    <select name="status" required class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
+                        <option value="active" {{ old('status', 'active') == 'active' ? 'selected' : '' }}>Activo</option>
+                        <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactivo</option>
+                    </select>
+                </div>
             </div>
             
-            <div>
-                <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Correo Electrónico</label>
-                <input type="email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
+            <!-- Right Column: Photograph Dropzone (5 cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
+                        <span class="material-symbols-outlined text-brand-accent text-lg">photo_camera</span> 2. Imagen del Instructor
+                    </h3>
+                </div>
+
+                <!-- Dashed Premium Dropzone -->
+                <div class="relative group">
+                    <label for="photo_file" class="block">
+                        <div class="border-2 border-dashed border-slate-800 hover:border-brand-accent/60 rounded-2xl bg-slate-900/30 p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 group shadow-inner min-h-[220px]">
+                            
+                            <!-- Cloud Icon and Animation -->
+                            <div class="w-16 h-16 rounded-2xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent shadow-[0_0_15px_rgba(0,240,255,0.1)] mb-4 group-hover:scale-105 transition-transform duration-300">
+                                <span class="material-symbols-outlined text-3xl font-bold">cloud_upload</span>
+                            </div>
+                            
+                            <!-- Upload Instructions -->
+                            <p class="text-xs font-bold text-white tracking-wide">Suelta la foto del instructor aquí o haz clic</p>
+                            <p class="text-[10px] text-slate-500 font-medium mt-2">Formatos soportados: JPG, PNG o WEBP (Máx. 2MB)</p>
+                            
+                            <!-- Hidden File Input -->
+                            <input type="file" name="photo_file" id="photo_file" accept="image/*" class="hidden">
+                            
+                            <!-- File Name preview banner -->
+                            <div id="file-name-preview" class="hidden mt-4 px-3 py-1.5 rounded-lg bg-brand-accent/10 border border-brand-accent/20 text-[10px] font-black uppercase text-brand-accent tracking-widest">
+                                Archivo Seleccionado
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Text Divider -->
+                <div class="flex items-center gap-3 py-1">
+                    <span class="h-px bg-slate-800 flex-1"></span>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest font-display">o ingresa una URL</span>
+                    <span class="h-px bg-slate-800 flex-1"></span>
+                </div>
+
+                <!-- URL Option -->
+                <div>
+                    <label for="photo_url" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Dirección URL de la Imagen</label>
+                    <input type="url" name="photo_url" id="photo_url" value="{{ old('photo_url') }}" placeholder="Ej. https://images.unsplash.com/photo-..."
+                        class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white placeholder-slate-600 focus:outline-none transition-all duration-300 text-sm">
+                </div>
             </div>
+
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Teléfono</label>
-                <input type="text" name="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
-            </div>
-            
-            <div>
-                <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Especialidad</label>
-                <select name="specialty" class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm appearance-none">
-                    <option value="">Seleccionar especialidad</option>
-                    <option value="Musculación" {{ old('specialty') == 'Musculación' ? 'selected' : '' }}>Musculación</option>
-                    <option value="Cardio" {{ old('specialty') == 'Cardio' ? 'selected' : '' }}>Cardio</option>
-                    <option value="Crossfit" {{ old('specialty') == 'Crossfit' ? 'selected' : '' }}>Crossfit</option>
-                    <option value="Boxeo" {{ old('specialty') == 'Boxeo' ? 'selected' : '' }}>Boxeo</option>
-                    <option value="Yoga" {{ old('specialty') == 'Yoga' ? 'selected' : '' }}>Yoga</option>
-                    <option value="Nutrición" {{ old('specialty') == 'Nutrición' ? 'selected' : '' }}>Nutrición</option>
-                    <option value="Fisioterapia" {{ old('specialty') == 'Fisioterapia' ? 'selected' : '' }}>Fisioterapia</option>
-                    <option value="Personalizada" {{ old('specialty') == 'Personalizada' ? 'selected' : '' }}>Personalizada</option>
-                </select>
-            </div>
-        </div>
-
-        <div>
-            <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Foto de Perfil</label>
-            <input type="file" name="photo" accept="image/*" class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-display file:font-bold file:bg-brand-accent file:text-brand-darkest hover:file:bg-cyan-400 transition-all duration-300">
-            <p class="text-[10px] text-slate-500 mt-2">Formato: jpeg, png, jpg, gif, webp. Máximo 2MB.</p>
-        </div>
-
-        <div>
-            <label class="block text-[11px] font-display font-black text-brand-accent uppercase tracking-widest mb-2">Estado</label>
-            <select name="status" required class="w-full px-4 py-3 rounded-xl bg-brand-darkest border border-brand-border text-white focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-sm">
-                <option value="active" {{ old('status', 'active') == 'active' ? 'selected' : '' }}>Activo</option>
-                <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactivo</option>
-            </select>
-        </div>
-
-        <div class="pt-4">
-            <button type="submit" class="bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest font-display font-bold px-6 py-3 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-105 transition-all duration-300 flex items-center gap-2 shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+        <!-- Submit Button Grid Footer -->
+        <div class="border-t border-slate-800/80 pt-6 mt-8 flex justify-end gap-3">
+            <a href="{{ route('instructors.index') }}" class="px-6 py-3 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-900 rounded-xl transition-all duration-200 text-sm font-bold font-display">
+                Cancelar
+            </a>
+            <button type="submit" class="bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest px-8 py-3 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-105 transition-all duration-300 font-bold font-display text-sm flex items-center gap-2">
                 <span class="material-symbols-outlined text-[20px] font-black">save</span> Registrar Instructor
             </button>
         </div>
     </form>
 </section>
+
+@section('scripts')
+<script>
+    // Visual Dropzone filename preview updater
+    document.getElementById('photo_file').addEventListener('change', function(e) {
+        const preview = document.getElementById('file-name-preview');
+        if (e.target.files && e.target.files.length > 0) {
+            const fileName = e.target.files[0].name;
+            preview.innerText = `Foto: ${fileName}`;
+            preview.classList.remove('hidden');
+        } else {
+            preview.classList.add('hidden');
+        }
+    });
+</script>
+@endsection
+
 @endsection
