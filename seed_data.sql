@@ -16,7 +16,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- 1. INSERTAR ADMINISTRADOR PRINCIPAL
 -- Contraseña por defecto: "password" (Hasheada con Bcrypt de Laravel)
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin Nova', 'admin@novagym.com', NOW(), '$2y$12$R.Sj9tSNDfJ0/7R6.q4Jc.vXkK.q3e9aBwN8m7oFp3y7F.FpA8tLq', NULL, '2025-10-01 08:00:00', '2025-10-01 08:00:00');
+(1, 'Admin Nova', 'albertogutierrezbedoya@gmail.com', NOW(), '$2y$12$R.Sj9tSNDfJ0/7R6.q4Jc.vXkK.q3e9aBwN8m7oFp3y7F.FpA8tLq', NULL, '2025-10-01 08:00:00', '2025-10-01 08:00:00');
 
 -- 2. INSERTAR 18 CLIENTES DISTRIBUIDOS TEMPORALMENTE (Para un gráfico de barras perfecto de Octubre 2025 a Mayo 2026)
 INSERT INTO `clients` (`id`, `user_id`, `name`, `email`, `phone`, `photo`, `status`, `created_at`, `updated_at`) VALUES

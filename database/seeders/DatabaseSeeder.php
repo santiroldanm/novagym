@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // 1. Create a premium default Administrator user
         $admin = User::create([
             'name' => 'Admin Nova',
-            'email' => 'admin@novagym.com',
+            'email' => 'albertogutierrezbedoya@gmail.com',
             'password' => Hash::make('password'),
         ]);
 

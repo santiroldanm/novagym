@@ -14,7 +14,7 @@ class InstructorSeeder extends Seeder
     public function run(): void
     {
         // 1. Create/link instructor profile for the admin user
-        $adminUser = User::where('email', 'admin@novagym.com')->first();
+        $adminUser = User::where('email', 'albertogutierrezbedoya@gmail.com')->first();
 
         if ($adminUser && !$adminUser->instructor) {
             Instructor::create([
