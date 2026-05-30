@@ -21,17 +21,17 @@ class Membership extends Model
         'notes',
     ];
 
-    /**
-     * Get the client associated with this membership.
-     */
+    
+
+
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
 
-    /**
-     * Get the instructor associated with this membership (if any).
-     */
+    
+
+
     public function instructor()
     {
         return $this->belongsTo(Instructor::class);

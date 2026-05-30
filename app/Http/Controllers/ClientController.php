@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the clients.
-     */
+    
+
+
     public function index()
     {
-        // Fetch clients with their routines count
+        
         $clients = Client::with(['branch'])->withCount('routines')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -22,18 +22,18 @@ class ClientController extends Controller
         return view('clients.index', compact('clients'));
     }
 
-    /**
-     * Show the form for creating a new client.
-     */
+    
+
+
     public function create()
     {
         $branches = \App\Models\Branch::where('status', 'active')->orderBy('name')->get();
         return view('clients.create', compact('branches'));
     }
 
-    /**
-     * Store a newly created client in storage.
-     */
+    
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -47,9 +47,9 @@ class ClientController extends Controller
         ]);
 
         $data = $validated;
-        $data['user_id'] = Auth::id(); // creator
+        $data['user_id'] = Auth::id(); 
 
-        // Handle Photo (Supports both file upload and external URL)
+        
         if ($request->hasFile('photo_file')) {
             $path = $request->file('photo_file')->store('clients', 'public');
             $data['photo'] = asset('storage/' . $path);
@@ -65,18 +65,18 @@ class ClientController extends Controller
             ->with('success', 'Cliente registrado exitosamente en la plataforma.');
     }
 
-    /**
-     * Show the form for editing the specified client.
-     */
+    
+
+
     public function edit(Client $client)
     {
         $branches = \App\Models\Branch::where('status', 'active')->orderBy('name')->get();
         return view('clients.edit', compact('client', 'branches'));
     }
 
-    /**
-     * Update the specified client in storage.
-     */
+    
+
+
     public function update(Request $request, Client $client)
     {
         $validated = $request->validate([
@@ -91,9 +91,9 @@ class ClientController extends Controller
 
         $data = $validated;
 
-        // Handle Photo update
+        
         if ($request->hasFile('photo_file')) {
-            // Delete old photo if it was a stored file
+            
             if ($client->photo && str_contains($client->photo, 'storage/clients/')) {
                 $oldPath = str_replace(asset('storage/'), '', $client->photo);
                 Storage::disk('public')->delete($oldPath);
@@ -110,18 +110,18 @@ class ClientController extends Controller
             ->with('success', 'Información del cliente actualizada exitosamente.');
     }
 
-    /**
-     * Remove the specified client from storage.
-     */
+    
+
+
     public function destroy(Client $client)
     {
-        // Delete photo if it was stored locally
+        
         if ($client->photo && str_contains($client->photo, 'storage/clients/')) {
             $oldPath = str_replace(asset('storage/'), '', $client->photo);
             Storage::disk('public')->delete($oldPath);
         }
 
-        // Delete client (cascades routines in database level)
+        
         $client->delete();
 
         return redirect()->route('clients.index')

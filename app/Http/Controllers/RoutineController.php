@@ -11,12 +11,12 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class RoutineController extends Controller
 {
-    /**
-     * Display a listing of the routines.
-     */
+    
+
+
     public function index()
     {
-        // Load routines with their client and instructor relations
+        
         $routines = Routine::with(['client', 'instructor'])
             ->orderBy('created_at', 'desc')
             ->get();
@@ -24,19 +24,19 @@ class RoutineController extends Controller
         return view('routines.index', compact('routines'));
     }
 
-    /**
-     * Show the form for creating a new routine.
-     */
+    
+
+
     public function create()
     {
-        // Fetch only active clients for new routines
+        
         $clients = Client::where('status', 'active')->orderBy('name')->get();
         return view('routines.create', compact('clients'));
     }
 
-    /**
-     * Store a newly created routine in storage.
-     */
+    
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -46,10 +46,10 @@ class RoutineController extends Controller
             'difficulty' => 'required|in:beginner,intermediate,advanced',
         ]);
 
-        // Get instructor_id from authenticated user if they are an instructor
+        
         $instructorId = null;
         if (Auth::check()) {
-            $instructor = Auth::user()->instructor; // requires relation on User model
+            $instructor = Auth::user()->instructor; 
             if ($instructor) {
                 $instructorId = $instructor->id;
             }
@@ -63,18 +63,18 @@ class RoutineController extends Controller
             ->with('success', 'Rutina de entrenamiento creada y asignada exitosamente.');
     }
 
-    /**
-     * Show the form for editing the specified routine.
-     */
+    
+
+
     public function edit(Routine $routine)
     {
         $clients = Client::orderBy('name')->get();
         return view('routines.edit', compact('routine', 'clients'));
     }
 
-    /**
-     * Update the specified routine in storage.
-     */
+    
+
+
     public function update(Request $request, Routine $routine)
     {
         $validated = $request->validate([
@@ -84,13 +84,13 @@ class RoutineController extends Controller
             'difficulty' => 'required|in:beginner,intermediate,advanced',
         ]);
 
-        // Update instructor_id if the authenticated user is an instructor (optional: keep existing if not)
+        
         if (Auth::check()) {
             $instructor = Auth::user()->instructor;
             if ($instructor) {
                 $validated['instructor_id'] = $instructor->id;
             }
-            // If not instructor, we keep existing instructor_id (do not add to validated)
+            
         }
 
         $routine->update($validated);
@@ -99,9 +99,9 @@ class RoutineController extends Controller
             ->with('success', 'Rutina de entrenamiento actualizada correctamente.');
     }
 
-    /**
-     * Remove the specified routine from storage.
-     */
+    
+
+
     public function destroy(Routine $routine)
     {
         $routine->delete();
@@ -110,9 +110,9 @@ class RoutineController extends Controller
             ->with('success', 'Rutina eliminada exitosamente.');
     }
 
-    /**
-     * Download the routine as a PDF.
-     */
+    
+
+
     public function downloadPdf($id)
     {
         $routine = Routine::with(['client', 'instructor'])->findOrFail($id);

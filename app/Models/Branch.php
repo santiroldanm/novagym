@@ -17,9 +17,9 @@ class Branch extends Model
         'status',
     ];
 
-    /**
-     * Get clients registered at this branch.
-     */
+    
+
+
     public function clients()
     {
         return $this->hasMany(Client::class);

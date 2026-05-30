@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>NovaGym - Entrena en el Futuro</title>
     
-    <!-- CDNs -->
+    
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -66,13 +66,13 @@
     </style>
 </head>
 <body class="bg-brand-darkest selection:bg-brand-accent/30 selection:text-brand-accent antialiased relative">
-    <!-- Outer ambient blurs -->
+    
     <div class="absolute w-[800px] h-[800px] rounded-full bg-cyan-500/5 blur-[150px] top-[-100px] right-[-100px] pointer-events-none z-0"></div>
     <div class="absolute w-[800px] h-[800px] rounded-full bg-blue-600/5 blur-[150px] bottom-[200px] left-[-200px] pointer-events-none z-0"></div>
 
     <div class="tech-grid-mesh absolute inset-0 opacity-40 pointer-events-none z-0"></div>
 
-    <!-- Top Premium Navigation Bar -->
+    
     <nav class="fixed top-0 left-0 w-full z-50 bg-brand-darkest/80 backdrop-blur-md border-b border-brand-border/40">
         <div class="flex justify-between items-center px-8 py-4 w-full max-w-7xl mx-auto">
             <div class="flex items-center gap-2">
@@ -100,14 +100,14 @@
         </div>
     </nav>
 
-    <!-- Content Sections -->
+    
     <main class="relative pt-24 z-10">
         
-        <!-- Hero Section -->
+        
         <section class="relative px-8 py-16 max-w-7xl mx-auto min-h-[680px] flex items-center">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
                 
-                <!-- Hero Left text block -->
+                
                 <div class="lg:col-span-7 space-y-6">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-accent/10 border border-brand-accent/20 rounded-full">
                         <span class="material-symbols-outlined text-[16px] text-brand-accent font-black animate-pulse">bolt</span>
@@ -132,13 +132,13 @@
                     </div>
                 </div>
                 
-                <!-- Hero Right graphics block -->
+                
                 <div class="lg:col-span-5 relative">
                     <div class="relative rounded-2xl overflow-hidden neon-card p-2 aspect-square flex items-center justify-center shadow-2xl">
-                        <!-- Premium High Quality Gym Unsplash Image -->
+                        
                         <img alt="NovaGym Athletical Performance" class="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=800"/>
                         
-                        <!-- Floating Glass KPI Overlay -->
+                        
                         <div class="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-brand-dark/85 border border-brand-accent/25 backdrop-blur-md shadow-2xl">
                             <div class="flex items-center justify-between">
                                 <div>
@@ -150,13 +150,13 @@
                         </div>
                     </div>
                     
-                    <!-- Glow decoration behind graphic -->
+                    
                     <div class="absolute -top-6 -right-6 w-36 h-36 bg-brand-accent/15 blur-3xl rounded-full"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
+        
         <section id="servicios" class="px-8 py-24 max-w-7xl mx-auto">
             <div class="text-center mb-16 space-y-3">
                 <h2 class="font-display text-4xl font-black text-white uppercase tracking-tight">POTENCIA TU <span class="text-brand-accent font-display cyan-glow-text">GIMNASIO</span></h2>
@@ -167,7 +167,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <!-- Service 1: Clients -->
+                
                 <div class="neon-card p-8 rounded-2xl group flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center mb-6 border border-brand-accent/20 group-hover:border-brand-accent/50 transition-colors shadow-lg shadow-brand-accent/5">
@@ -190,7 +190,7 @@
                     </ul>
                 </div>
                 
-                <!-- Service 2: Routines -->
+                
                 <div class="neon-card p-8 rounded-2xl group flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center mb-6 border border-brand-accent/20 group-hover:border-brand-accent/50 transition-colors shadow-lg shadow-brand-accent/5">
@@ -213,7 +213,7 @@
                     </ul>
                 </div>
                 
-                <!-- Service 3: Analytics -->
+                
                 <div class="neon-card p-8 rounded-2xl group flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center mb-6 border border-brand-accent/20 group-hover:border-brand-accent/50 transition-colors shadow-lg shadow-brand-accent/5">
@@ -238,10 +238,10 @@
             </div>
         </section>
 
-        <!-- Call to Action Section -->
+        
         <section class="px-8 py-24 max-w-7xl mx-auto">
             <div class="neon-card p-12 lg:p-20 rounded-3xl relative overflow-hidden text-center border-2 border-brand-accent/25 shadow-2xl">
-                <!-- Inner overlays -->
+                
                 <div class="absolute inset-0 bg-brand-accent/5 pointer-events-none"></div>
                 <div class="absolute -left-12 -top-12 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 
@@ -259,7 +259,7 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    
     <footer class="bg-brand-darkest border-t border-slate-800 py-8 relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-center px-8 w-full max-w-7xl mx-auto gap-4">
             <div class="text-center md:text-left space-y-1.5">

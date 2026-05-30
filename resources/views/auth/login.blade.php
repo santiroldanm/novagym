@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Iniciar Sesión - NovaGym</title>
     
-    <!-- CDNs -->
+    
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -61,25 +61,25 @@
 </head>
 <body class="bg-brand-darkest min-h-screen flex items-center justify-center p-6 relative">
     
-    <!-- Background subtle neon lights -->
+    
     <div class="absolute w-96 h-96 bg-brand-accent/5 blur-[120px] top-10 left-10 pointer-events-none"></div>
     <div class="absolute w-96 h-96 bg-blue-500/5 blur-[120px] bottom-10 right-10 pointer-events-none"></div>
 
     <div class="w-full max-w-[450px] z-10 space-y-6">
-        <!-- Logo Brand -->
+        
         <div class="flex items-center gap-2.5 justify-center">
             <span class="material-symbols-outlined text-brand-accent text-[38px] font-black text-glow">bolt</span>
             <span class="text-3xl font-display font-black text-white text-glow tracking-tight uppercase">NOVA<span class="text-brand-accent">GYM</span></span>
         </div>
 
-        <!-- Central Card Box -->
+        
         <div class="neon-card p-8 rounded-2xl shadow-2xl border border-brand-border/60">
             <div class="mb-6">
                 <h2 class="text-xl font-bold font-display text-white uppercase">Acceso Administrativo</h2>
                 <p class="text-xs text-slate-400 font-medium mt-1">Ingresa tus credenciales autorizadas de entrenador o gestor.</p>
             </div>
 
-            <!-- Validation Error Banner -->
+            
             @if($errors->any())
             <div class="mb-5 bg-red-950/40 border border-red-500/30 text-slate-200 p-4 rounded-xl text-xs space-y-1">
                 <div class="flex items-center gap-1.5 text-red-400 font-bold mb-1">
@@ -94,18 +94,18 @@
             </div>
             @endif
 
-            <!-- Form Action -->
+            
             <form action="{{ route('login') }}" method="POST" class="space-y-4">
                 @csrf
 
-                <!-- Email Input -->
+                
                 <div>
                     <label for="email" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Correo Electrónico</label>
                     <input type="email" name="email" id="email" value="{{ old('email', 'admin@novagym.com') }}" required 
                         class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white placeholder-slate-700 focus:outline-none transition-all duration-300 text-sm">
                 </div>
 
-                <!-- Password Input -->
+                
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label for="password" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest font-display">Contraseña</label>
@@ -115,14 +115,14 @@
                         class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white placeholder-slate-700 focus:outline-none transition-all duration-300 text-sm">
                 </div>
 
-                <!-- Remember Me Checkbox -->
+                
                 <div class="flex items-center gap-2 py-1 select-none cursor-pointer">
                     <input type="checkbox" name="remember" id="remember" 
                         class="w-4 h-4 bg-slate-950/60 border-slate-800 rounded text-brand-accent focus:ring-brand-accent focus:ring-offset-0 focus:ring-offset-transparent">
                     <label for="remember" class="text-xs text-slate-400 font-semibold cursor-pointer">Recordar mi sesión activa</label>
                 </div>
 
-                <!-- Submit Button -->
+                
                 <button type="submit" 
                     class="w-full py-3 bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest font-display font-bold rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-[0.98] transition-all duration-150 text-sm mt-6 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,240,255,0.15)]">
                     <span class="material-symbols-outlined text-[20px] font-black">login</span>
@@ -130,7 +130,7 @@
                 </button>
             </form>
 
-            <!-- Bottom Register Link -->
+            
             <div class="mt-8 border-t border-slate-800/80 pt-4 text-center">
                 <p class="text-xs text-slate-400 font-medium">
                     ¿Aún no tienes cuenta administrativa? 
@@ -139,7 +139,7 @@
             </div>
         </div>
 
-        <!-- Back Button -->
+        
         <div class="text-center">
             <a href="/" class="text-xs text-slate-500 hover:text-white transition-colors flex items-center justify-center gap-1 font-bold font-display uppercase tracking-widest">
                 <span class="material-symbols-outlined text-sm font-bold">arrow_back</span> Volver a la Landing

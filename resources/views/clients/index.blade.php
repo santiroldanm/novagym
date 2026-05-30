@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-<!-- Header Section -->
+
 <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
     <div>
         <h2 class="font-headline text-3xl font-black text-white tracking-tight uppercase">Gestión de <span class="text-brand-accent cyan-glow-text font-headline">Clientes</span></h2>
@@ -29,17 +29,17 @@
     </div>
 </header>
 
-<!-- Main Table Container -->
+
 <section class="neon-card p-6 rounded-2xl">
-    <!-- Premium Quick Filters Toolbar -->
+    
     <div class="flex flex-col md:flex-row gap-4 mb-6 justify-between items-center bg-brand-dark/45 p-4 rounded-2xl border border-brand-border/60">
-        <!-- Custom Search Input -->
+        
         <div class="relative w-full md:w-80">
             <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg select-none">search</span>
             <input type="text" id="customSearchInput" placeholder="Buscar atletas por nombre o contacto..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-brand-darkest border border-brand-border text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 text-xs">
         </div>
         
-        <!-- Status Filter Dropdown -->
+        
         <div class="flex items-center gap-3 w-full md:w-auto flex-shrink-0">
             <label for="statusFilter" class="text-[10px] font-display font-black tracking-widest text-slate-400 uppercase whitespace-nowrap">Estado del Atleta:</label>
             <div class="relative w-full md:w-48">
@@ -68,7 +68,7 @@
             <tbody>
                 @foreach($clients as $client)
                 <tr class="border-b border-slate-800/40 hover:bg-slate-800/30 transition-all duration-200 {{ $client->status === 'inactive' ? 'bg-red-500/5 hover:bg-red-500/10 border-red-500/10' : '' }}">
-                    <!-- Photo Column -->
+                    
                     <td class="py-4 px-6">
                         <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-slate-800 flex items-center justify-center bg-slate-950/60 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
                             @if($client->photo)
@@ -79,7 +79,7 @@
                         </div>
                     </td>
                     
-                    <!-- Name Column -->
+                    
                     <td class="py-4 px-6 font-display font-bold text-sm text-white">
                         <div>{{ $client->name }}</div>
                         @if($client->branch)
@@ -90,7 +90,7 @@
                         @endif
                     </td>
                     
-                    <!-- Contact Column -->
+                    
                     <td class="py-4 px-6 text-sm">
                         <div class="text-slate-200 font-medium">{{ $client->email }}</div>
                         <div class="text-[11px] text-slate-500 font-semibold mt-1 flex items-center gap-1.5">
@@ -99,7 +99,7 @@
                         </div>
                     </td>
                     
-                    <!-- Status Column -->
+                    
                     <td class="py-4 px-6 text-sm">
                         @if($client->status === 'active')
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-cyan-950/40 text-brand-accent border border-brand-accent/30 shadow-[0_0_10px_rgba(0,240,255,0.1)]">
@@ -112,20 +112,20 @@
                         @endif
                     </td>
                     
-                    <!-- Routines count -->
+                    
                     <td class="py-4 px-6 text-center text-sm font-black text-brand-accent font-display">
                         {{ $client->routines_count }}
                     </td>
                     
-                    <!-- Actions Column -->
+                    
                     <td class="py-4 px-6 text-right">
                         <div class="flex items-center justify-end gap-2">
-                            <!-- Edit Button -->
+                            
                             <a href="{{ route('clients.edit', $client->id) }}" class="w-9 h-9 flex items-center justify-center bg-slate-900 border border-slate-800 text-slate-400 hover:text-brand-accent hover:border-brand-accent hover:shadow-[0_0_10px_rgba(0,240,255,0.25)] rounded-lg transition-all duration-200" title="Editar Cliente">
                                 <span class="material-symbols-outlined text-[18px]">edit</span>
                             </a>
                             
-                            <!-- Delete Button -->
+                            
                             <form action="{{ route('clients.destroy', $client->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a {{ $client->name }}? Se eliminarán todas sus rutinas en cascada.');" class="inline">
                                 @csrf
                                 @method('DELETE')

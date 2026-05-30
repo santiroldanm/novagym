@@ -20,7 +20,7 @@
 @endsection
 
 @section('content')
-<!-- Header Section -->
+
 <header class="mb-8">
     <h2 class="font-headline text-3xl font-black text-white tracking-tight uppercase">Mi Perfil <span class="text-brand-accent cyan-glow-text font-headline">Instructor</span></h2>
     <p class="text-sm text-slate-400 font-medium">Actualiza tu información de instructor y gestiona tus credenciales de acceso.</p>
@@ -28,13 +28,13 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
     
-    <!-- Left form container (8 cols on lg) -->
+    
     <div class="lg:col-span-8 neon-card p-8 rounded-2xl">
         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             @method('PUT')
 
-            <!-- Section 1: Personal info -->
+            
             <div>
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
                     <span class="material-symbols-outlined text-brand-accent text-lg">info</span> Datos del Perfil
@@ -42,7 +42,7 @@
                 <p class="text-xs text-slate-400 font-medium mb-4">Actualiza tu nombre, correo electrónico, teléfono y especialidad.</p>
             </div>
 
-            <!-- Name & Email Grid -->
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label for="name" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Nombre *</label>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <!-- Phone & Specialty -->
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label for="phone" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Teléfono</label>
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <!-- Section 2: Photo -->
+            
             <div class="pt-6">
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
                     <span class="material-symbols-outlined text-brand-accent text-lg">image</span> Fotografía de Perfil
@@ -80,7 +80,7 @@
                 <p class="text-xs text-slate-400 font-medium mb-4">Actualiza tu foto de perfil subiendo un archivo o proporcionando una URL externa.</p>
             </div>
 
-            <!-- Photo Upload -->
+            
             <div class="space-y-4">
                 <div class="flex items-center space-x-3">
                     <label for="photo_file" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Subir Foto</label>
@@ -105,7 +105,7 @@
                 @endif
             </div>
 
-            <!-- Section 3: Status -->
+            
             <div class="pt-6">
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
                     <span class="material-symbols-outlined text-brand-accent text-lg">check_circle</span> Estado de Cuenta
@@ -113,7 +113,7 @@
                 <p class="text-xs text-slate-400 font-medium mb-4">Actualiza tu estado de cuenta en la plataforma.</p>
             </div>
 
-            <!-- Status Toggle -->
+            
             <div class="space-y-3">
                 <div class="flex items-center space-x-4">
                     <div class="flex items-center space-x-2">
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <!-- Submit Button -->
+            
             <div class="border-t border-slate-800/80 pt-6 mt-8 flex justify-end">
                 <button type="submit" class="bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest px-8 py-3 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-105 transition-all duration-300 font-bold font-display text-sm flex items-center gap-2">
                     <span class="material-symbols-outlined text-[20px] font-black">save</span> Guardar Configuración
@@ -140,12 +140,12 @@
         </form>
     </div>
 
-    <!-- Right Side card info (4 cols on lg) -->
+    
     <div class="lg:col-span-4 neon-card p-6 rounded-2xl flex flex-col items-center text-center relative overflow-hidden group">
-        <!-- Ambient radial glow behind card -->
+        
         <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-accent/5 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
         
-        <!-- Large Glowing Profile Avatar -->
+        
         <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-brand-accent flex items-center justify-center mb-4 mt-4 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative bg-brand-accent/10">
             @if($profile->photo)
                 <img src="{{ $profile->photo }}" alt="{{ $profile->name }}" class="w-full h-full object-cover">
@@ -160,7 +160,7 @@
             <p class="text-[9px] text-emerald-400 font-bold tracking-widest uppercase font-display">Instructor Certificado</p>
         </div>
         
-        <!-- Stats and Details List -->
+        
         <div class="w-full border-t border-slate-800 mt-6 pt-4 space-y-3.5 text-left text-xs">
             <div class="flex justify-between items-center text-slate-400 font-medium">
                 <span>Instructor desde:</span>

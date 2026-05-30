@@ -68,15 +68,15 @@
                     </td>
                     <td class="py-4 px-6 text-right">
                         <div class="flex items-center justify-end gap-2">
-                            <!-- Download PDF -->
+                            
                             <a href="{{ route('meal-plans.pdf', $plan->id) }}" class="w-9 h-9 flex items-center justify-center bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 hover:shadow-[0_0_10px_rgba(52,211,153,0.25)] rounded-lg transition-all duration-200" title="Descargar PDF">
                                 <span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
                             </a>
-                            <!-- Edit -->
+                            
                             <a href="{{ route('meal-plans.edit', $plan->id) }}" class="w-9 h-9 flex items-center justify-center bg-slate-900 border border-slate-800 text-slate-400 hover:text-brand-accent hover:border-brand-accent hover:shadow-[0_0_10px_rgba(0,240,255,0.25)] rounded-lg transition-all duration-200" title="Editar">
                                 <span class="material-symbols-outlined text-[18px]">edit</span>
                             </a>
-                            <!-- Delete -->
+                            
                             <form action="{{ route('meal-plans.destroy', $plan->id) }}" method="POST" onsubmit="return confirm('¿Eliminar este plan de alimentación?');" class="inline">
                                 @csrf
                                 @method('DELETE')

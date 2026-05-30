@@ -11,9 +11,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class MealPlanController extends Controller
 {
-    /**
-     * Display a listing of the meal plans.
-     */
+    
+
+
     public function index()
     {
         $mealPlans = MealPlan::with(['client', 'instructor'])
@@ -23,18 +23,18 @@ class MealPlanController extends Controller
         return view('meal_plans.index', compact('mealPlans'));
     }
 
-    /**
-     * Show the form for creating a new meal plan.
-     */
+    
+
+
     public function create()
     {
         $clients = Client::where('status', 'active')->orderBy('name')->get();
         return view('meal_plans.create', compact('clients'));
     }
 
-    /**
-     * Store a newly created meal plan in storage.
-     */
+    
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -49,7 +49,7 @@ class MealPlanController extends Controller
 
         $data = $validated;
 
-        // Get instructor_id from authenticated user if they are an instructor
+        
         $instructorId = null;
         if (Auth::check()) {
             $instructor = Auth::user()->instructor;
@@ -65,18 +65,18 @@ class MealPlanController extends Controller
             ->with('success', 'Plan de alimentación creado y asignado exitosamente.');
     }
 
-    /**
-     * Show the form for editing the specified meal plan.
-     */
+    
+
+
     public function edit(MealPlan $mealPlan)
     {
         $clients = Client::orderBy('name')->get();
         return view('meal_plans.edit', compact('mealPlan', 'clients'));
     }
 
-    /**
-     * Update the specified meal plan in storage.
-     */
+    
+
+
     public function update(Request $request, MealPlan $mealPlan)
     {
         $validated = $request->validate([
@@ -104,9 +104,9 @@ class MealPlanController extends Controller
             ->with('success', 'Plan de alimentación actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified meal plan from storage.
-     */
+    
+
+
     public function destroy(MealPlan $mealPlan)
     {
         $mealPlan->delete();
@@ -115,9 +115,9 @@ class MealPlanController extends Controller
             ->with('success', 'Plan de alimentación eliminado exitosamente.');
     }
 
-    /**
-     * Download the meal plan as a PDF.
-     */
+    
+
+
     public function downloadPdf($id)
     {
         $mealPlan = MealPlan::with(['client', 'instructor'])->findOrFail($id);

@@ -12,32 +12,32 @@ use App\Models\Client;
 
 class ProfileController extends Controller
 {
-    /**
-     * Show the profile edit form.
-     */
+    
+
+
     public function edit()
     {
         $user = Auth::user();
         
-        // Determine user type
+        
         $instructor = Instructor::where('user_id', $user->id)->first();
         $client = Client::where('user_id', $user->id)->first();
         
         if ($instructor) {
             $type = 'instructor';
             $profile = $instructor;
-            // Load additional data for view
+            
             $clientsCount = $instructor->clients()->count();
             $routinesCount = $instructor->routines()->count();
             return view('profile.instructor.edit', compact('profile', 'type', 'clientsCount', 'routinesCount'));
         } elseif ($client) {
             $type = 'client';
             $profile = $client;
-            // Load additional data for view
+            
             $routinesCount = $client->routines()->count();
             return view('profile.client.edit', compact('profile', 'type', 'routinesCount'));
         } else {
-            // Default to admin (User)
+            
             $type = 'admin';
             $profile = $user;
             $clientsCount = $user->clients()->count();
@@ -45,14 +45,14 @@ class ProfileController extends Controller
         }
     }
 
-    /**
-     * Update the active user's profile info.
-     */
+    
+
+
     public function update(Request $request)
     {
         $user = Auth::user();
         
-        // Determine user type
+        
         $instructor = Instructor::where('user_id', $user->id)->first();
         $client = Client::where('user_id', $user->id)->first();
         
@@ -67,7 +67,7 @@ class ProfileController extends Controller
             return redirect()->route('profile.edit')
                 ->with('success', 'Tu perfil de cliente ha sido actualizado con éxito.');
         } else {
-            // Admin update
+            
             $this->validateAdminUpdate($request, $user->id);
             $this->updateAdmin($request, $user);
             return redirect()->route('profile.edit')
@@ -75,7 +75,7 @@ class ProfileController extends Controller
         }
     }
     
-    // Validation methods
+    
     protected function validateAdminUpdate(Request $request, $userId)
     {
         $request->validate([
@@ -111,7 +111,7 @@ class ProfileController extends Controller
         ]);
     }
     
-    // Update methods
+    
     protected function updateAdmin(Request $request, $user)
     {
         $validated = $request->only('name', 'email');
@@ -130,9 +130,9 @@ class ProfileController extends Controller
     {
         $validated = $request->only('name', 'email', 'phone', 'specialty', 'status');
         
-        // Handle Photo
+        
         if ($request->hasFile('photo_file')) {
-            // Delete old photo if it was a stored file
+            
             if ($instructor->photo && str_contains($instructor->photo, 'storage/instructors/')) {
                 $oldPath = str_replace(asset('storage/'), '', $instructor->photo);
                 Storage::disk('public')->delete($oldPath);
@@ -142,7 +142,7 @@ class ProfileController extends Controller
         } elseif (!empty($request->input('photo_url'))) {
             $validated['photo'] = $request->input('photo_url');
         } else {
-            $validated['photo'] = $instructor->photo; // keep existing
+            $validated['photo'] = $instructor->photo; 
         }
         
         $instructor->fill($validated)->save();
@@ -152,9 +152,9 @@ class ProfileController extends Controller
     {
         $validated = $request->only('name', 'email', 'phone', 'status');
         
-        // Handle Photo
+        
         if ($request->hasFile('photo_file')) {
-            // Delete old photo if it was a stored file
+            
             if ($client->photo && str_contains($client->photo, 'storage/clients/')) {
                 $oldPath = str_replace(asset('storage/'), '', $client->photo);
                 Storage::disk('public')->delete($oldPath);
@@ -164,7 +164,7 @@ class ProfileController extends Controller
         } elseif (!empty($request->input('photo_url'))) {
             $validated['photo'] = $request->input('photo_url');
         } else {
-            $validated['photo'] = $client->photo; // keep existing
+            $validated['photo'] = $client->photo; 
         }
         
         $client->fill($validated)->save();

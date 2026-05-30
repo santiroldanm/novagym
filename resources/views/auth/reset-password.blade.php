@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Restablecer Contraseña - NovaGym</title>
     
-    <!-- CDNs -->
+    
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -61,18 +61,18 @@
 </head>
 <body class="bg-brand-darkest min-h-screen flex items-center justify-center p-6 relative">
     
-    <!-- Background subtle neon lights -->
+    
     <div class="absolute w-96 h-96 bg-brand-accent/5 blur-[120px] top-10 left-10 pointer-events-none"></div>
     <div class="absolute w-96 h-96 bg-blue-500/5 blur-[120px] bottom-10 right-10 pointer-events-none"></div>
 
     <div class="w-full max-w-[450px] z-10 space-y-6">
-        <!-- Logo Brand -->
+        
         <div class="flex items-center gap-2.5 justify-center">
             <span class="material-symbols-outlined text-brand-accent text-[38px] font-black text-glow">bolt</span>
             <span class="text-3xl font-display font-black text-white text-glow tracking-tight uppercase">NOVA<span class="text-brand-accent">GYM</span></span>
         </div>
 
-        <!-- Central Card Box -->
+        
         <div class="neon-card p-8 rounded-2xl shadow-2xl border border-brand-border/60">
             <div class="mb-6">
                 <h2 class="text-xl font-bold font-display text-white uppercase">Crear Nueva Contraseña</h2>
@@ -107,7 +107,7 @@
                         class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white placeholder-slate-700 focus:outline-none transition-all duration-300 text-sm">
                 </div>
 
-                <!-- Submit Button -->
+                
                 <button type="submit" 
                     class="w-full py-3 bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest font-display font-bold rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-[0.98] transition-all duration-150 text-sm mt-6 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,240,255,0.15)]">
                     <span class="material-symbols-outlined text-[20px] font-black">lock_reset</span>

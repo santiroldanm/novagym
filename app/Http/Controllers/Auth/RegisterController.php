@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-    /**
-     * Show the registration form.
-     */
+    
+
+
     public function showRegistrationForm()
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle registration.
-     */
+    
+
+
     public function register(Request $request)
     {
         $validated = $request->validate([

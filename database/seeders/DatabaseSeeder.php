@@ -15,12 +15,12 @@ use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
+    
+
+
     public function run(): void
     {
-        // 1. Create a premium default Administrator user
+        
         $admin = User::create([
             'name' => 'Admin Nova',
             'email' => 'albertogutierrezbedoya@gmail.com',
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         $instructor = Instructor::where('user_id', $admin->id)->first();
         $allInstructors = Instructor::where('status', 'active')->get();
 
-        // 3. Create Gym Branches
+        
         $branch1 = Branch::create([
             'name' => 'NovaGym Sede Central',
             'address' => 'Av. Diagonal 450, Barcelona',
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
 
         $branches = [$branch1, $branch2, $branch3];
 
-        // 4. Generate 18 clients distributed over the last 8 months
+        
         $faker = \Faker\Factory::create();
 
         $clientProfiles = [
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
         foreach ($clientProfiles as $profile) {
             $createdAt = Carbon::now()->subMonths($profile['month_offset'])->subDays(rand(1, 28))->subHours(rand(1, 23));
             
-            // Random branch assignment (80% chance)
+            
             $assignedBranch = $faker->optional(0.8)->randomElement($branches);
             $status = $faker->randomElement(['active', 'active', 'active', 'inactive']);
 
@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 5. Generate 10 routines distributed among our clients
+        
         $routineTemplates = [
             [
                 'name' => 'Hipertrofia Funcional X',
@@ -157,7 +157,7 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        // Shuffle clients to assign routines randomly
+        
         $shuffledClientsForRoutines = $clients;
         shuffle($shuffledClientsForRoutines);
 
@@ -178,7 +178,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 6. Generate Memberships for clients
+        
         foreach ($clients as $client) {
             $createdAt = $client->created_at;
             $status = $client->status === 'active' ? 'active' : 'expired';
@@ -197,7 +197,7 @@ class DatabaseSeeder extends Seeder
 
             $startDate = $createdAt->toDateString();
             
-            // Active clients get an active membership ending in the future
+            
             if ($client->status === 'active') {
                 $status = 'active';
                 $startDate = Carbon::now()->subDays(rand(1, 15))->toDateString();
@@ -223,7 +223,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 7. Generate Meal Plans for clients
+        
         $mealPlanTemplates = [
             [
                 'name' => 'Volumen Limpio Estructurado',
@@ -259,7 +259,7 @@ class DatabaseSeeder extends Seeder
             ]
         ];
 
-        // Assign meal plans to 12 clients
+        
         $shuffledClientsForMeals = $clients;
         shuffle($shuffledClientsForMeals);
 

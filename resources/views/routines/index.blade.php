@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-<!-- Header Section -->
+
 <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
     <div>
         <h2 class="font-headline text-3xl font-black text-white tracking-tight uppercase">Diseño de <span class="text-brand-accent cyan-glow-text font-headline">Rutinas</span></h2>
@@ -29,7 +29,7 @@
     </div>
 </header>
 
-<!-- Main Cards Container -->
+
 @if($routines->isEmpty())
 <section class="neon-card p-12 rounded-2xl text-center flex flex-col items-center justify-center border border-dashed border-slate-800">
     <span class="material-symbols-outlined text-slate-600 text-6xl mb-4">fitness_center</span>
@@ -43,13 +43,13 @@
 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     @foreach($routines as $routine)
     <div class="neon-card p-6 rounded-2xl flex flex-col justify-between hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,240,255,0.12)] border border-brand-border hover:border-brand-accent/40 transition-all duration-300 relative group overflow-hidden">
-        <!-- Glass effect overlay -->
+        
         <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
         
         <div>
-            <!-- Upper Header Row -->
+            
             <div class="flex justify-between items-start gap-2 mb-4">
-                <!-- Badge Dificultad -->
+                
                 <div>
                     @if($routine->difficulty === 'advanced')
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-red-950/40 text-red-400 border border-red-900/30">
@@ -66,18 +66,18 @@
                     @endif
                 </div>
 
-                <!-- Icon decoration -->
+                
                 <div class="text-brand-accent/40 group-hover:text-brand-accent transition-colors duration-300">
                     <span class="material-symbols-outlined text-2xl font-black">fitness_center</span>
                 </div>
             </div>
 
-            <!-- Routine name (imponente) -->
+            
             <h3 class="text-xl font-headline font-black text-white tracking-tight leading-tight group-hover:text-brand-accent transition-colors duration-300 mb-2 truncate" title="{{ $routine->name }}">
                 {{ $routine->name }}
             </h3>
 
-            <!-- Client detail -->
+            
             <div class="mb-4 flex items-center gap-2">
                 <span class="text-xs text-slate-400 font-medium">Asignado a:</span>
                 @if($routine->client)
@@ -90,22 +90,22 @@
                 @endif
             </div>
 
-            <!-- Description (Formatted) -->
+            
             <p class="text-xs text-slate-400 font-medium leading-relaxed mb-6 line-clamp-3" title="{{ $routine->description }}">
                 {{ $routine->description }}
             </p>
         </div>
 
-        <!-- Action buttons row -->
+        
         <div class="flex items-center justify-between border-t border-brand-border/60 pt-4 mt-auto gap-3 relative z-10">
-            <!-- Edit/Delete grouped -->
+            
             <div class="flex gap-2">
-                <!-- Edit Button -->
+                
                 <a href="{{ route('routines.edit', $routine->id) }}" class="w-9 h-9 flex items-center justify-center bg-slate-900 border border-slate-800 text-slate-400 hover:text-brand-accent hover:border-brand-accent hover:shadow-[0_0_10px_rgba(0,240,255,0.25)] rounded-lg transition-all duration-200" title="Editar Rutina">
                     <span class="material-symbols-outlined text-[18px]">edit</span>
                 </a>
                 
-                <!-- Delete Button -->
+                
                 <form action="{{ route('routines.destroy', $routine->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta rutina?');" class="inline">
                     @csrf
                     @method('DELETE')
@@ -115,7 +115,7 @@
                 </form>
             </div>
 
-            <!-- Highlighted PDF Download Button -->
+            
             <a href="{{ route('routines.pdf', $routine->id) }}" class="bg-gradient-to-r from-brand-accent to-cyan-600 hover:from-brand-accent hover:to-cyan-500 text-brand-darkest font-display font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 text-xs hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] hover:scale-105 transition-all duration-300">
                 <span class="material-symbols-outlined text-[16px] font-black pointer-events-none">download</span> Descargar PDF
             </a>

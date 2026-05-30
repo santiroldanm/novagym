@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-<!-- Header Section -->
+
 <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
     <div>
         <h2 class="font-headline text-3xl font-black text-white tracking-tight uppercase">Gestión de <span class="text-brand-accent cyan-glow-text font-headline">Sedes</span></h2>
@@ -29,9 +29,9 @@
     </div>
 </header>
 
-<!-- Main Table Container -->
+
 <section class="neon-card p-6 rounded-2xl">
-    <!-- Search Toolbar -->
+    
     <div class="flex flex-col md:flex-row gap-4 mb-6 justify-between items-center bg-brand-dark/45 p-4 rounded-2xl border border-brand-border/60">
         <div class="relative w-full md:w-80">
             <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg select-none">search</span>

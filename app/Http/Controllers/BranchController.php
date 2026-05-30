@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
-    /**
-     * Display a listing of the branches.
-     */
+    
+
+
     public function index()
     {
         $branches = Branch::withCount('clients')
@@ -19,17 +19,17 @@ class BranchController extends Controller
         return view('branches.index', compact('branches'));
     }
 
-    /**
-     * Show the form for creating a new branch.
-     */
+    
+
+
     public function create()
     {
         return view('branches.create');
     }
 
-    /**
-     * Store a newly created branch in storage.
-     */
+    
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -46,17 +46,17 @@ class BranchController extends Controller
             ->with('success', 'Sede registrada exitosamente en la plataforma.');
     }
 
-    /**
-     * Show the form for editing the specified branch.
-     */
+    
+
+
     public function edit(Branch $branch)
     {
         return view('branches.edit', compact('branch'));
     }
 
-    /**
-     * Update the specified branch in storage.
-     */
+    
+
+
     public function update(Request $request, Branch $branch)
     {
         $validated = $request->validate([
@@ -73,9 +73,9 @@ class BranchController extends Controller
             ->with('success', 'Información de la sede actualizada exitosamente.');
     }
 
-    /**
-     * Remove the specified branch from storage.
-     */
+    
+
+
     public function destroy(Branch $branch)
     {
         if ($branch->clients()->count() > 0) {

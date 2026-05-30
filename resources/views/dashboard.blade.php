@@ -23,7 +23,7 @@
 @endsection
 
 @section('content')
-<!-- Header Section -->
+
 <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
     <div>
         <h2 class="font-headline text-3xl font-black text-white tracking-tight uppercase">Dashboard <span class="text-brand-accent cyan-text-glow font-headline">Performance</span></h2>
@@ -36,9 +36,9 @@
     </div>
 </header>
 
-<!-- Metric Bento Grid -->
+
 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-    <!-- Card 1: Ingresos Activos -->
+    
     <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-[#032333] to-slate-950">
         <div class="relative z-10 flex-1">
             <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Ingresos Estimados</p>
@@ -50,7 +50,7 @@
         </div>
     </div>
     
-    <!-- Card 2: Clientes Activos -->
+    
     <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden">
         <div class="relative z-10 flex-1">
             <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Clientes Activos</p>
@@ -64,7 +64,7 @@
         </div>
     </div>
     
-    <!-- Card 3: Membresías Activas -->
+    
     <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden">
         <div class="relative z-10 flex-1">
             <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Membresías Activas</p>
@@ -76,7 +76,7 @@
         </div>
     </div>
     
-    <!-- Card 4: Rutinas y Dietas -->
+    
     <div class="neon-glow-card p-6 rounded-2xl flex justify-between items-center relative overflow-hidden">
         <div class="relative z-10 flex-1">
             <p class="text-[10px] text-slate-400 tracking-widest font-black uppercase font-display">Rutinas / Nutrición</p>
@@ -89,9 +89,9 @@
     </div>
 </section>
 
-<!-- Secondary Bento Grid -->
+
 <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-    <!-- Sedes Activas -->
+    
     <div class="neon-glow-card p-4 rounded-xl flex items-center gap-4 bg-slate-900/30">
         <div class="w-11 h-11 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-brand-accent">
             <span class="material-symbols-outlined text-xl">domain</span>
@@ -102,7 +102,7 @@
         </div>
     </div>
     
-    <!-- Staff de Coaches -->
+    
     <div class="neon-glow-card p-4 rounded-xl flex items-center gap-4 bg-slate-900/30">
         <div class="w-11 h-11 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
             <span class="material-symbols-outlined text-xl">sports_gymnastics</span>
@@ -113,7 +113,7 @@
         </div>
     </div>
 
-    <!-- Planes Nutricionales -->
+    
     <div class="neon-glow-card p-4 rounded-xl flex items-center gap-4 bg-slate-900/30">
         <div class="w-11 h-11 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
             <span class="material-symbols-outlined text-xl">restaurant</span>
@@ -125,10 +125,10 @@
     </div>
 </section>
 
-<!-- Dashboard Main Layout Grid -->
+
 <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
     
-    <!-- Chart Container (2 Cols) -->
+    
     <div class="lg:col-span-2 neon-glow-card p-6 rounded-2xl bg-brand-dark/45">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <div>
@@ -148,10 +148,10 @@
         </div>
     </div>
     
-    <!-- Right Sidebar Bento (1 Col) -->
+    
     <div class="space-y-6">
         
-        <!-- Recent Activity Logs -->
+        
         <div class="neon-glow-card p-6 rounded-2xl bg-brand-dark/45">
             <h4 class="font-display font-bold text-white text-lg mb-4 flex items-center gap-2 border-b border-slate-800 pb-3">
                 <span class="material-symbols-outlined text-brand-accent">explore</span> Actividad Reciente
@@ -174,10 +174,10 @@
             </div>
         </div>
         
-        <!-- Futuristic AI Optimizer Module -->
+        
         <div class="bg-gradient-to-br from-slate-950 via-[#0a1120] to-[#030712] border-2 border-brand-accent/20 rounded-2xl p-6 flex flex-col justify-between h-[210px] relative overflow-hidden group shadow-2xl">
             <div class="absolute inset-0 bg-cyan-500/5 mix-blend-overlay pointer-events-none"></div>
-            <!-- Glow background decor -->
+            
             <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-brand-accent/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
             
             <div class="relative z-10">

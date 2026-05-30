@@ -16,14 +16,14 @@ class NovaGymExtensionTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * Test Branch creation and client assignment.
-     */
+    
+
+
     public function test_branch_creation_and_client_assignment(): void
     {
         $user = User::factory()->create();
 
-        // 1. Create a branch
+        
         $branch = Branch::create([
             'name' => 'Sede Norte Test',
             'address' => 'Av. de las Pruebas 123',
@@ -37,7 +37,7 @@ class NovaGymExtensionTest extends TestCase
             'status' => 'active'
         ]);
 
-        // 2. Create client and assign to branch
+        
         $client = Client::create([
             'user_id' => $user->id,
             'branch_id' => $branch->id,
@@ -56,9 +56,9 @@ class NovaGymExtensionTest extends TestCase
         $this->assertCount(1, $branch->clients);
     }
 
-    /**
-     * Test Membership creation and dates calculations.
-     */
+    
+
+
     public function test_membership_creation_and_date_calculations(): void
     {
         $user = User::factory()->create();
@@ -77,12 +77,12 @@ class NovaGymExtensionTest extends TestCase
             'status' => 'active'
         ]);
 
-        // Authenticate user
+        
         $this->actingAs($user);
 
-        // Store via controller logic / POST request
+        
         $startDate = Carbon::now()->toDateString();
-        $expectedEndDate = Carbon::parse($startDate)->addMonth()->toDateString(); // monthly is +1 month
+        $expectedEndDate = Carbon::parse($startDate)->addMonth()->toDateString(); 
 
         $response = $this->post(route('memberships.store'), [
             'client_id' => $client->id,
@@ -107,9 +107,9 @@ class NovaGymExtensionTest extends TestCase
         ]);
     }
 
-    /**
-     * Test MealPlan creation and PDF generation download.
-     */
+    
+
+
     public function test_meal_plan_pdf_download(): void
     {
         $user = User::factory()->create();
@@ -128,7 +128,7 @@ class NovaGymExtensionTest extends TestCase
             'status' => 'active'
         ]);
 
-        // Create meal plan
+        
         $mealPlan = MealPlan::create([
             'client_id' => $client->id,
             'instructor_id' => $instructor->id,
@@ -145,7 +145,7 @@ class NovaGymExtensionTest extends TestCase
             'calories' => 2800
         ]);
 
-        // Authenticate and fetch PDF
+        
         $response = $this->actingAs($user)
             ->get(route('meal-plans.pdf', $mealPlan->id));
 

@@ -20,7 +20,7 @@
 @endsection
 
 @section('content')
-<!-- Header Section -->
+
 <header class="mb-8">
     <h2 class="font-headline text-3xl font-black text-white tracking-tight uppercase">Mi Perfil <span class="text-brand-accent cyan-glow-text font-headline">Administrativo</span></h2>
     <p class="text-sm text-slate-400 font-medium">Actualiza tu información básica de contacto y gestiona las credenciales de acceso de administrador.</p>
@@ -28,13 +28,13 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
     
-    <!-- Left form container (8 cols on lg) -->
+    
     <div class="lg:col-span-8 neon-card p-8 rounded-2xl">
         <form action="{{ route('profile.update') }}" method="POST" class="space-y-6">
             @csrf
             @method('PUT')
 
-            <!-- Section 1: Personal info -->
+            
             <div>
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
                     <span class="material-symbols-outlined text-brand-accent text-lg">info</span> Datos del Perfil
@@ -42,7 +42,7 @@
                 <p class="text-xs text-slate-400 font-medium mb-4">Actualiza tu nombre de coach/administrador y dirección de correo electrónico principal.</p>
             </div>
 
-            <!-- Name & Email Grid -->
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label for="name" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Nombre de Administrador *</label>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <!-- Section 2: Password credentials -->
+            
             <div class="pt-6">
                 <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-2 border-b border-slate-800 pb-2">
                     <span class="material-symbols-outlined text-brand-accent text-lg">security</span> Actualizar Seguridad
@@ -65,14 +65,14 @@
                 <p class="text-xs text-slate-400 font-medium mb-4">Rellena estos campos únicamente si deseas modificar tu contraseña de inicio de sesión actual.</p>
             </div>
 
-            <!-- Current Password -->
+            
             <div>
                 <label for="current_password" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Contraseña Actual</label>
                 <input type="password" name="current_password" id="current_password" placeholder="Tu contraseña actual para validar cambios"
                     class="focus-cyan w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-white placeholder-slate-700 focus:outline-none transition-all duration-300 text-sm">
             </div>
 
-            <!-- New Password & Confirm Grid -->
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label for="new_password" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Nueva Contraseña</label>
@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            <!-- Submit Button -->
+            
             <div class="border-t border-slate-800/80 pt-6 mt-8 flex justify-end">
                 <button type="submit" class="bg-gradient-to-r from-brand-accent to-cyan-600 text-brand-darkest px-8 py-3 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:scale-105 transition-all duration-300 font-bold font-display text-sm flex items-center gap-2">
                     <span class="material-symbols-outlined text-[20px] font-black">save</span> Guardar Configuración
@@ -96,12 +96,12 @@
         </form>
     </div>
 
-    <!-- Right Side card info (4 cols on lg) -->
+    
     <div class="lg:col-span-4 neon-card p-6 rounded-2xl flex flex-col items-center text-center relative overflow-hidden group">
-        <!-- Ambient radial glow behind card -->
+        
         <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-accent/5 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
         
-        <!-- Large Glowing Profile Avatar -->
+        
         <div class="w-20 h-20 rounded-full bg-brand-accent/10 border-2 border-brand-accent flex items-center justify-center mb-4 mt-4 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative">
             <span class="material-symbols-outlined text-brand-accent text-5xl font-bold select-none">account_circle</span>
         </div>
@@ -112,7 +112,7 @@
             <p class="text-[9px] text-emerald-400 font-bold tracking-widest uppercase font-display">Superusuario Administrador</p>
         </div>
         
-        <!-- Stats and Details List -->
+        
         <div class="w-full border-t border-slate-800 mt-6 pt-4 space-y-3.5 text-left text-xs">
             <div class="flex justify-between items-center text-slate-400 font-medium">
                 <span>Miembro desde:</span>
@@ -128,7 +128,7 @@
             </div>
         </div>
 
-        <!-- Quick Actions Menu -->
+        
         <div class="w-full border-t border-slate-800 mt-6 pt-4 space-y-2 text-left">
             <p class="text-[9px] font-black text-slate-500 uppercase tracking-widest font-display mb-2">Accesos Rápidos</p>
             <a href="{{ route('dashboard') }}" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-brand-accent/30 text-[11px] text-slate-300 hover:text-white transition-all duration-200">

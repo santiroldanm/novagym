@@ -8,12 +8,12 @@ use App\Models\Instructor;
 
 class InstructorSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    
+
+
     public function run(): void
     {
-        // 1. Create/link instructor profile for the admin user
+        
         $adminUser = User::where('email', 'albertogutierrezbedoya@gmail.com')->first();
 
         if ($adminUser && !$adminUser->instructor) {
@@ -29,7 +29,7 @@ class InstructorSeeder extends Seeder
             $this->command->info('Instructor record created for admin user.');
         }
 
-        // 2. Seed other premium instructors (nullable user_id)
+        
         $instructorsData = [
             [
                 'name' => 'Carlos Mendoza',
@@ -69,7 +69,7 @@ class InstructorSeeder extends Seeder
                 'phone' => '+34 655 666 777',
                 'specialty' => 'Pilates & Recuperación Lesiones',
                 'photo' => 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&q=80&w=200',
-                'status' => 'inactive', // inactive for variety
+                'status' => 'inactive', 
             ],
         ];
 

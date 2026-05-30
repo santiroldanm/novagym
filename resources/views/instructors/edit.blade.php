@@ -35,7 +35,7 @@
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- Left Column: Details (7 cols) -->
+            
             <div class="lg:col-span-7 space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             
-            <!-- Right Column: Photograph Dropzone (5 cols) -->
+            
             <div class="lg:col-span-5 space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
@@ -94,7 +94,7 @@
                     </h3>
                 </div>
 
-                <!-- Photographed Current Preview (If exists) -->
+                
                 @if($instructor->photo)
                     <div class="mb-4">
                         <span class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Imagen Actual:</span>
@@ -104,24 +104,24 @@
                     </div>
                 @endif
 
-                <!-- Dashed Premium Dropzone -->
+                
                 <div class="relative group">
                     <label for="photo_file" class="block">
                         <div class="border-2 border-dashed border-slate-800 hover:border-brand-accent/60 rounded-2xl bg-slate-900/30 p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 group shadow-inner min-h-[180px]">
                             
-                            <!-- Cloud Icon and Animation -->
+                            
                             <div class="w-12 h-12 rounded-2xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent shadow-[0_0_15px_rgba(0,240,255,0.1)] mb-3 group-hover:scale-105 transition-transform duration-300">
                                 <span class="material-symbols-outlined text-2xl font-bold">cloud_upload</span>
                             </div>
                             
-                            <!-- Upload Instructions -->
+                            
                             <p class="text-xs font-bold text-white tracking-wide">Suelta la foto aquí para cambiarla</p>
                             <p class="text-[10px] text-slate-500 font-medium mt-1">Formatos soportados: JPG, PNG o WEBP (Máx. 2MB)</p>
                             
-                            <!-- Hidden File Input -->
+                            
                             <input type="file" name="photo_file" id="photo_file" accept="image/*" class="hidden">
                             
-                            <!-- File Name preview banner -->
+                            
                             <div id="file-name-preview" class="hidden mt-3 px-3 py-1.5 rounded-lg bg-brand-accent/10 border border-brand-accent/20 text-[10px] font-black uppercase text-brand-accent tracking-widest">
                                 Archivo Seleccionado
                             </div>
@@ -129,14 +129,14 @@
                     </label>
                 </div>
 
-                <!-- Text Divider -->
+                
                 <div class="flex items-center gap-3 py-1">
                     <span class="h-px bg-slate-800 flex-1"></span>
                     <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest font-display">o ingresa una URL</span>
                     <span class="h-px bg-slate-800 flex-1"></span>
                 </div>
 
-                <!-- URL Option -->
+                
                 <div>
                     <label for="photo_url" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Dirección URL de la Imagen</label>
                     <input type="url" name="photo_url" id="photo_url" value="{{ old('photo_url', $instructor->photo) }}" placeholder="Ej. https://images.unsplash.com/photo-..."
@@ -146,7 +146,7 @@
 
         </div>
 
-        <!-- Submit Button Grid Footer -->
+        
         <div class="border-t border-slate-800/80 pt-6 mt-8 flex justify-end gap-3">
             <a href="{{ route('instructors.index') }}" class="px-6 py-3 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-900 rounded-xl transition-all duration-200 text-sm font-bold font-display">
                 Cancelar

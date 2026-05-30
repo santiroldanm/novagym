@@ -11,9 +11,9 @@ use Carbon\Carbon;
 
 class MembershipController extends Controller
 {
-    /**
-     * Display a listing of the memberships.
-     */
+    
+
+
     public function index()
     {
         $memberships = Membership::with(['client', 'instructor'])
@@ -23,18 +23,18 @@ class MembershipController extends Controller
         return view('memberships.index', compact('memberships'));
     }
 
-    /**
-     * Show the form for creating a new membership.
-     */
+    
+
+
     public function create()
     {
         $clients = Client::where('status', 'active')->orderBy('name')->get();
         return view('memberships.create', compact('clients'));
     }
 
-    /**
-     * Store a newly created membership in storage.
-     */
+    
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -50,7 +50,7 @@ class MembershipController extends Controller
 
         $data = $validated;
         
-        // Auto-calculate end_date based on plan_type if not provided manually
+        
         $startDate = Carbon::parse($validated['start_date']);
         if (empty($validated['end_date'])) {
             if ($validated['plan_type'] === 'monthly') {
@@ -60,12 +60,12 @@ class MembershipController extends Controller
             } elseif ($validated['plan_type'] === 'annual') {
                 $data['end_date'] = $startDate->copy()->addYear()->toDateString();
             } else {
-                // custom must have end_date
+                
                 $data['end_date'] = $startDate->copy()->addMonth()->toDateString();
             }
         }
 
-        // Get instructor_id if current logged-in user is an instructor
+        
         $instructorId = null;
         if (Auth::check()) {
             $instructor = Auth::user()->instructor;
@@ -81,18 +81,18 @@ class MembershipController extends Controller
             ->with('success', 'Membresía asignada exitosamente al cliente.');
     }
 
-    /**
-     * Show the form for editing the specified membership.
-     */
+    
+
+
     public function edit(Membership $membership)
     {
         $clients = Client::orderBy('name')->get();
         return view('memberships.edit', compact('membership', 'clients'));
     }
 
-    /**
-     * Update the specified membership in storage.
-     */
+    
+
+
     public function update(Request $request, Membership $membership)
     {
         $validated = $request->validate([
@@ -121,7 +121,7 @@ class MembershipController extends Controller
             }
         }
 
-        // Keep current instructor or update if current user is instructor
+        
         if (Auth::check()) {
             $instructor = Auth::user()->instructor;
             if ($instructor) {
@@ -135,9 +135,9 @@ class MembershipController extends Controller
             ->with('success', 'Membresía actualizada exitosamente.');
     }
 
-    /**
-     * Remove the specified membership from storage.
-     */
+    
+
+
     public function destroy(Membership $membership)
     {
         $membership->delete();

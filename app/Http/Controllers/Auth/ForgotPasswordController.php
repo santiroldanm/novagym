@@ -25,7 +25,7 @@ class ForgotPasswordController extends Controller
             return back()->with(['success' => 'Te hemos enviado por correo el enlace para restablecer tu contraseña.']);
         }
 
-        // Map status codes to custom Spanish messages
+        
         $messages = [
             Password::INVALID_USER => 'No existe ningún usuario registrado con esa dirección de correo electrónico.',
             Password::RESET_THROTTLED => 'Has solicitado restablecer tu contraseña demasiadas veces. Por favor, espera un momento antes de volver a intentarlo.',

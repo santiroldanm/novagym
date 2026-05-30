@@ -10,11 +10,11 @@ class Routine extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    
+
+
+
+
     protected $fillable = [
         'client_id',
         'instructor_id',
@@ -23,17 +23,17 @@ class Routine extends Model
         'difficulty',
     ];
 
-    /**
-     * Get the client that owns the routine.
-     */
+    
+
+
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
     }
 
-    /**
-     * Get the instructor that created the routine.
-     */
+    
+
+
     public function instructor(): BelongsTo
     {
         return $this->belongsTo(Instructor::class);

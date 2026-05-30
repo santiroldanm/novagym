@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * Show the login form.
-     */
+    
+
+
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle authentication.
-     */
+    
+
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -38,9 +38,9 @@ class LoginController extends Controller
         ])->onlyInput('email');
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
+    
+
+
     public function logout(Request $request)
     {
         Auth::logout();

@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'NovaGym') - High Performance System</title>
     
-    <!-- CDNs: Tailwind CSS, FontAwesome, Google Fonts, Material Symbols -->
+    
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- DataTables CSS CDN (Heavily modified for modern dark premium styling) -->
+    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
-    <!-- jQuery & Chart.js CDNs -->
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Tailwind Config containing brand specifications -->
+    
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -236,22 +236,22 @@
 </head>
 <body class="bg-brand-darkest min-h-screen text-slate-100 antialiased selection:bg-brand-accent/30 selection:text-brand-accent">
 
-    <!-- Main Outer Wrapper -->
+    
     <div id="app-wrapper" class="flex min-h-screen relative overflow-hidden">
-        <!-- Radial ambient blur lights -->
+        
         <div class="absolute w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-[120px] top-[-200px] left-[-200px] pointer-events-none"></div>
         <div class="absolute w-[600px] h-[600px] rounded-full bg-blue-600/5 blur-[120px] bottom-[-200px] right-[-200px] pointer-events-none"></div>
         
-        <!-- PC Sidebar Navigation (Width: 260px) -->
+        
         <aside id="sidebar" class="fixed left-0 top-0 h-full w-[260px] bg-brand-dark/95 border-r border-brand-border/60 flex flex-col justify-between py-8 px-6 z-50 backdrop-blur-md shadow-2xl">
-            <!-- Manual Toggle Button -->
+            
             <button id="sidebar-toggle-btn" class="absolute -right-3.5 top-8 w-7 h-7 rounded-full bg-brand-dark border border-brand-border hover:border-brand-accent text-slate-400 hover:text-brand-accent flex items-center justify-center transition-all duration-300 shadow-md shadow-black/80 hover:shadow-[0_0_10px_rgba(0,240,255,0.4)] z-[60]">
                 <span class="material-symbols-outlined text-[16px] font-black select-none transition-transform duration-300">chevron_left</span>
             </button>
 
-            <!-- Sidebar Upper Section -->
+            
             <div class="flex flex-col flex-1">
-                <!-- Brand logo / system ID -->
+                
                 <div class="px-2 mb-10 flex items-center gap-3 transition-all duration-300 center-collapsed">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-accent to-cyan-700 flex items-center justify-center shadow-lg shadow-brand-accent/25 ring-1 ring-brand-accent/30 flex-shrink-0">
                         <span class="material-symbols-outlined text-brand-darkest text-2xl font-black">bolt</span>
@@ -262,13 +262,13 @@
                     </div>
                 </div>
                 
-                <!-- Premium Active Admin Badge -->
+                
                 @auth
                 <div class="mb-8 px-3 py-3 rounded-2xl bg-brand-card/60 border border-brand-border/50 shadow-lg flex items-center gap-3 group relative overflow-hidden transition-all duration-300 center-collapsed">
-                    <!-- Glass effect overlay -->
+                    
                     <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
-                    <!-- Avatar circle with active status border -->
+                    
                     <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-brand-accent flex-shrink-0 bg-brand-dark flex items-center justify-center shadow-[0_0_12px_rgba(0,240,255,0.25)] group-hover:scale-105 transition-transform duration-300 relative">
                         <span class="material-symbols-outlined text-brand-accent text-2xl font-bold select-none">account_circle</span>
                     </div>
@@ -283,7 +283,7 @@
                 </div>
                 @endauth
                 
-                <!-- Menu Navigation Links -->
+                
                 <nav class="space-y-1.5">
                     <a class="{{ Request::routeIs('dashboard') ? 'sidebar-active text-brand-accent' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/60 hover:border-l-4 hover:border-brand-accent/40' }} flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group center-collapsed" href="{{ route('dashboard') }}">
                         <span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110 flex-shrink-0">grid_view</span>
@@ -327,7 +327,7 @@
                 </nav>
             </div>
             
-            <!-- Sidebar Lower Section: Logout Option -->
+            
             @auth
             <div class="border-t border-brand-border/40 pt-4 mt-auto">
                 <form action="{{ route('logout') }}" method="POST" id="logout-form">
@@ -341,10 +341,10 @@
             @endauth
         </aside>
 
-        <!-- Main Content Area (Pushed left 260px) -->
+        
         <main class="ml-[260px] flex-1 min-h-screen flex flex-col relative z-10">
             
-            <!-- Animated Success system floating notice -->
+            
             @if(session('success'))
             <div class="sys-notification fixed top-6 right-6 z-[100] animate-bounce max-w-sm">
                 <div class="bg-slate-900 border-2 border-brand-accent/50 text-white px-5 py-4 rounded-2xl shadow-[0_0_30px_rgba(0,240,255,0.25)] flex items-center gap-3 backdrop-blur-md">
@@ -359,7 +359,7 @@
             </div>
             @endif
 
-            <!-- Animated Error system floating list -->
+            
             @if($errors->any() && !Request::routeIs('login') && !Request::routeIs('register'))
             <div class="sys-notification fixed top-6 right-6 z-[100] max-w-sm animate-pulse">
                 <div class="bg-slate-900 border-2 border-red-500/50 text-white px-5 py-4 rounded-2xl shadow-[0_0_30px_rgba(239,68,68,0.25)] backdrop-blur-md">
@@ -376,12 +376,12 @@
             </div>
             @endif
 
-            <!-- Central Content Container -->
+            
             <div class="flex-1 p-8 max-w-[1600px] w-full mx-auto">
                 @yield('content')
             </div>
 
-            <!-- Professional Dark Footer -->
+            
             <footer class="bg-brand-darkest border-t border-brand-border/40 px-8 py-6 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-500">
                 <p class="font-display font-medium">© 2026 NOVA<span class="text-brand-accent font-display">GYM</span> Systems. Designed for high performance coaching.</p>
                 <div class="flex gap-4 mt-2 md:mt-0 font-display font-bold">
@@ -393,7 +393,7 @@
         </main>
     </div>
 
-    <!-- DataTables JS CDN -->
+    
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
     <script>

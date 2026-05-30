@@ -20,17 +20,17 @@ class MealPlan extends Model
         'fats_g',
     ];
 
-    /**
-     * Get the client this meal plan is assigned to.
-     */
+    
+
+
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
 
-    /**
-     * Get the instructor who created this meal plan.
-     */
+    
+
+
     public function instructor()
     {
         return $this->belongsTo(Instructor::class);

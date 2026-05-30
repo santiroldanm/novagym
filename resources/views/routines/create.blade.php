@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<!-- Header Section -->
+
 <header class="mb-8">
     <div class="mb-2">
         <a href="{{ route('routines.index') }}" class="text-brand-accent hover:underline text-xs flex items-center gap-1 font-bold font-display uppercase tracking-widest">
@@ -28,12 +28,12 @@
     <p class="text-sm text-slate-400 font-medium">Establece los objetivos, ejercicios y asigna la rutina a un atleta activo.</p>
 </header>
 
-<!-- Form Container -->
+
 <section class="max-w-3xl neon-card p-8 rounded-2xl">
     <form action="{{ route('routines.store') }}" method="POST" class="space-y-6">
         @csrf
 
-        <!-- Name & Client Selection Grid -->
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                 <label for="name" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Nombre de la Rutina *</label>
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <!-- Difficulty Selection -->
+        
         <div>
             <label for="difficulty" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Nivel de Dificultad *</label>
             <select name="difficulty" id="difficulty" required
@@ -66,7 +66,7 @@
             </select>
         </div>
 
-        <!-- Description (Textarea) -->
+        
         <div>
             <label for="description" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-display">Descripción e Instrucciones de la Rutina *</label>
             <textarea name="description" id="description" rows="6" required placeholder="Describe detalladamente las series, repeticiones, descansos y los ejercicios específicos que componen esta rutina de entrenamiento..."
@@ -74,7 +74,7 @@
             <p class="text-[10px] text-slate-500 mt-2 font-medium">Tip: Sé específico con los tiempos de descanso y porcentajes de RM para obtener mejores resultados.</p>
         </div>
 
-        <!-- Submit Buttons -->
+        
         <div class="border-t border-slate-800/80 pt-6 flex justify-end gap-3">
             <a href="{{ route('routines.index') }}" class="px-6 py-3 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-900 rounded-xl transition-all duration-200 text-sm font-bold font-display">
                 Cancelar

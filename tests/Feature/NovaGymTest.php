@@ -13,12 +13,12 @@ class NovaGymTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * Test public API endpoints return correctly structured JSON.
-     */
+    
+
+
     public function test_public_api_endpoints(): void
     {
-        // 1. Clients API
+        
         $response = $this->getJson('/api/public/clients');
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -27,7 +27,7 @@ class NovaGymTest extends TestCase
                 'data'
             ]);
 
-        // 2. Routines API
+        
         $response = $this->getJson('/api/public/routines');
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -36,7 +36,7 @@ class NovaGymTest extends TestCase
                 'data'
             ]);
 
-        // 3. Instructors API
+        
         $response = $this->getJson('/api/public/instructors');
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -46,12 +46,12 @@ class NovaGymTest extends TestCase
             ]);
     }
 
-    /**
-     * Test the forgot password request flow.
-     */
+    
+
+
     public function test_forgot_password_sends_email(): void
     {
-        // Create user
+        
         $user = User::factory()->create([
             'email' => 'test-recover@novagym.com'
         ]);
@@ -64,15 +64,15 @@ class NovaGymTest extends TestCase
         $response->assertSessionHas('success');
     }
 
-    /**
-     * Test backend PDF generation route.
-     */
+    
+
+
     public function test_download_routine_pdf_returns_pdf(): void
     {
-        // Create user
+        
         $user = User::factory()->create();
         
-        // Create client
+        
         $client = Client::create([
             'user_id' => $user->id,
             'name' => 'Test Client',
@@ -80,7 +80,7 @@ class NovaGymTest extends TestCase
             'status' => 'active'
         ]);
 
-        // Create instructor
+        
         $instructor = Instructor::create([
             'user_id' => $user->id,
             'name' => 'Test Instructor',
@@ -88,7 +88,7 @@ class NovaGymTest extends TestCase
             'status' => 'active'
         ]);
 
-        // Create routine
+        
         $routine = Routine::create([
             'client_id' => $client->id,
             'instructor_id' => $instructor->id,
@@ -97,7 +97,7 @@ class NovaGymTest extends TestCase
             'difficulty' => 'beginner'
         ]);
 
-        // Authenticate and fetch PDF
+        
         $response = $this->actingAs($user)
             ->get("/routines/{$routine->id}/pdf");
 
